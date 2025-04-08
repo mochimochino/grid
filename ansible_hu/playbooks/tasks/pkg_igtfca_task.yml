@@ -1,0 +1,13 @@
+---
+- ansible.builtin.import_tasks: repo_egi_igtf_task.yml
+
+- name: Install certificates on newer distros (EL8+)
+  ansible.builtin.dnf:
+    name:
+      - ca-policy-egi-core
+      - ca-policy-lcg
+    state: latest
+    enablerepo: "EGI-trustanchors"
+    when: ( ansible_facts['distribution'] == 'AlmaLinux' and ansible_facts['distribution_major_version'] | int >= 8) or ansible_facts['distribution'] == 'Fedora'
+  #when: ( ansible_facts['distribution'] == 'AlmaLinux' and ansible_facts['distribution_major_version'] | int  > 7 ) or ansible_facts['distribution'] == 'Fedora'
+  tags: packages

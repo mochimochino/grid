@@ -1,0 +1,102 @@
+---
+- name: Install epel and elrepo repositories
+  ansible.builtin.include_tasks: "{{ item }}"
+  with_items:
+    - pkg_yum-utils_task.yml
+    - repo_epel_task.yml
+    - repo_elrepo_task.yml
+
+
+- name: Ensure the crb repository is enabled
+  community.general.dnf_config_manager:
+    name: crb
+    state: enabled
+  when: ansible_facts['distribution'] == 'AlmaLinux'
+
+- name: Install system management and monitoring tools - EL9
+  ansible.builtin.dnf:
+    name:
+      - coreutils
+      - util-linux
+      - procps-ng
+      - sysstat
+      - cronie
+      - crontabs
+      - cronie-anacron
+      - iproute
+      - iproute-tc
+      - ipset
+      - ipset-service
+      - rsync
+      - iotop
+      - iotop-c
+      - blktrace
+      - ethtool
+      - lsof
+    state: present
+    update_cache: false
+  register: systools_el9
+  when: systools_el9 is undefined and ( ansible_facts['distribution'] == 'AlmaLinux' or ansible_facts['distribution'] == 'Fedora' )
+  tags: packages
+
+- name: Create /etc/ipset/ipset.d
+  ansible.builtin.file:
+    path: /etc/ipset/ipset.d
+    state: directory
+    mode: "0755"
+
+- name: Install from pip the jc module
+  ansible.builtin.pip:
+    executable: pip3
+    name:
+      - jc
+    extra_args: --user
+    state: present
+
+- name: Enable and start cron - RH like
+  ansible.builtin.systemd:
+    name: crond
+    state: started
+    enabled: true
+  when: ansible_facts['distribution'] == 'AlmaLinux' or ansible_facts['distribution'] == 'Fedora' or ansible_facts['distribution'] == 'CentOS'
+
+- name: Set ipset to save on restart
+  community.general.ini_file:
+    path: /etc/sysconfig/ipset-config
+    mode: "0644"
+    option: IPSET_SAVE_ON_STOP
+    value: "yes"
+    state: present
+    no_extra_spaces: true
+    modify_inactive_option: true
+
+- name: Enable and start ipset
+  ansible.builtin.systemd:
+    name: ipset
+    state: started
+    enabled: true
+
+- name: User HOME/bin path
+  ansible.builtin.copy:
+    dest: /etc/profile.d/add_user_paths.sh
+    mode: "0644"
+    owner: root
+    group: root
+    backup: false
+    force: true
+    content: |
+        pathmunge $HOME/bin
+        pathmunge $HOME/.local/bin
+  when: ansible_facts['distribution'] == 'AlmaLinux' or ansible_facts['distribution'] == 'Fedora' or ansible_facts['distribution'] == 'CentOS'
+
+- name: Set TZ default value
+  ansible.builtin.copy:
+    dest: /etc/profile.d/set_tz.sh
+    mode: "0644"
+    owner: root
+    group: root
+    backup: false
+    force: true
+    content: |
+        TZ=':/etc/localtime'
+        export TZ

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# first let's check if there is disable-fw-lldp priv flags
+STATE=$(ethtool --show-priv-flags ${1} 2> /dev/null | awk '/disable-fw-lldp/ {print $NF;}')
+[[ -z "${STATE}" ]] && exit 0       # flag not present
+[[ "${STATE}" == "on" ]] && exit 0  # flag already set to on
+
+echo "$(basename ${0} .tune_eth) - START"
+ethtool --set-priv-flags ${1} disable-fw-lldp on
+echo "$(basename ${0} .tune_eth) - END"
