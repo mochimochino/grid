@@ -1,6 +1,6 @@
 # Hiroshima grid
 
-
+広島サイトのファイルシステム構成についてまとめる。
 
 ## Getting started
 
