@@ -3,7 +3,7 @@
   vars:
     chrony_base_ip: "pub85"
 
-    profile: iss
+    profile: hiroshima
 
     _eos_env_roles: "mgm mq"
 

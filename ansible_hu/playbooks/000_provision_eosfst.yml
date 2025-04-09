@@ -3,9 +3,9 @@
   vars:
     chrony_base_ip: "pub85"
 
-    host_src_data_sync: "mgm.spacescience.ro"
+    host_src_data_sync: "grid04.aligrid.hiroshima-u.ac.jp"
 
-    profile: iss
+    profile: hiroshima
 
     _eos_env_roles: "fst"
 
