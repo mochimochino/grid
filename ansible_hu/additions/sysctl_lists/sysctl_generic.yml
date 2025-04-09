@@ -12,5 +12,5 @@ sysctl_list:
   - "{{ playbook_dir }}/../additions/sysctl.d/99-delayacct.conf"
   - "{{ playbook_dir }}/../additions/sysctl.d/99-inotify.conf"
   - "{{ playbook_dir }}/../additions/sysctl.d/99-security.conf"
-  - "{{ playbook_dir }}/../additions/sysctl.d/80-network_buffers_25GB.conf"
+  - "{{ playbook_dir }}/../additions/sysctl.d/80-network_buffers_10GB.conf"
   - "{{ playbook_dir }}/../additions/sysctl.d/90-singularity.conf"
