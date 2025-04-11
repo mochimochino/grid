@@ -1,0 +1,12 @@
+---
+#install pip3
+
+- name: Install pyhton3-pip 
+  hosts: eos_mgm
+  become: yes
+
+  tasks:
+    - name: Ensure python3-pip package is installed via dnf
+      ansible.builtin.dnf:
+        name: python3-pip
+        state: present

@@ -6,7 +6,6 @@
     - repo_epel_task.yml
     - repo_elrepo_task.yml
 
-
 - name: Ensure the crb repository is enabled
   community.general.dnf_config_manager:
     name: crb

@@ -1,5 +1,5 @@
 - hosts: "{{ target | default('eos_mgm') }}"
-  gather_facts: False
+  gather_facts: True #False
   vars:
     chrony_base_ip: "pub85"
 
