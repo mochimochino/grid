@@ -1,0 +1,15 @@
+
+all:
+  vars:
+       ansible_ssh_user: root
+  children:
+      eos_mgm:
+        hosts:
+            grid04:
+            grid05:
+            grid06:
+      eos_fst:
+        hosts:
+            nfs11:
+            nfs12:
+            nfs13:
