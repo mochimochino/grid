@@ -1,6 +1,14 @@
 # Hiroshima grid
 
-広島サイトのファイルシステム構成についてまとめる。
+広島サイトの構成についてまとめる。
+
+VOBOX
+
+
+Woker Node
+
+Storage servers(EOS)
+
 
 ## Getting started
 
