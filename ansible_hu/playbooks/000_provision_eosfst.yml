@@ -1,5 +1,5 @@
 - hosts: "{{ target | default('eos_fst') }}"
-  gather_facts: False
+  gather_facts: yes
   vars:
     chrony_base_ip: "pub85"
 

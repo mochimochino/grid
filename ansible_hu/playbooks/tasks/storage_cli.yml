@@ -20,21 +20,21 @@
     - smartctl_dump
     - smart_temp_report
 
-- name: Sync md format tools
-  ansible.builtin.copy:
-    dest: /root/bin/md_mkformat/
-    src: "{{ playbook_dir }}/../additions/storage_cmds/md_mkformat/{{ md_format_scripts }}"
-    owner: root
-    group: root
-    mode: '0600'
-    force: true
-  loop_control:
-    loop_var: md_format_scripts
-  with_items:
-    - create_md_array
-    - format_md_component
-    - format_mdraid
-    - select_disk_range
+#- name: Sync md format tools
+#  ansible.builtin.copy:
+#    dest: /root/bin/md_mkformat/
+#    src: "{{ playbook_dir }}/../additions/storage_cmds/md_mkformat/{{ md_format_scripts }}"
+#    owner: root
+#    group: root
+#    mode: '0600'
+#    force: true
+#  loop_control:
+#    loop_var: md_format_scripts
+#  with_items:
+#    - create_md_array     既存のRAIDがある場合は危険
+#    - format_md_component
+#    - format_mdraid
+#    - select_disk_range
 
 - name: Add cron job for smart_temp_report
   ansible.builtin.copy:

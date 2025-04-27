@@ -1,0 +1,259 @@
+
+PLAY [eos_mgm] *****************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [grid04]
+ok: [grid05]
+ok: [grid06]
+
+TASK [ansible.builtin.include_tasks] *******************************************
+included: /root/grid/ansible_hu/playbooks/tasks/00basic_tools.yml for grid04, grid05, grid06 => (item=tasks/00basic_tools.yml)
+included: /root/grid/ansible_hu/playbooks/tasks/00basic_tools_hw.yml for grid04, grid05, grid06 => (item=tasks/00basic_tools_hw.yml)
+included: /root/grid/ansible_hu/playbooks/tasks/00storage_tools.yml for grid04, grid05, grid06 => (item=tasks/00storage_tools.yml)
+included: /root/grid/ansible_hu/playbooks/tasks/storage_cli.yml for grid04, grid05, grid06 => (item=tasks/storage_cli.yml)
+included: /root/grid/ansible_hu/playbooks/tasks/mdraid_conf_task.yml for grid04, grid05, grid06 => (item=tasks/mdraid_conf_task.yml)
+included: /root/grid/ansible_hu/playbooks/tasks/pkg_kernelml_install_task.yml for grid04, grid05, grid06 => (item=tasks/pkg_kernelml_install_task.yml)
+included: /root/grid/ansible_hu/playbooks/tasks/pkg_igtfca_task.yml for grid04, grid05, grid06 => (item=tasks/pkg_igtfca_task.yml)
+included: /root/grid/ansible_hu/playbooks/tasks/pkg_lsc_vomses_task.yml for grid04, grid05, grid06 => (item=tasks/pkg_lsc_vomses_task.yml)
+included: /root/grid/ansible_hu/playbooks/tasks/pkg_eos_mgm_task.yml for grid04, grid05, grid06 => (item=tasks/pkg_eos_mgm_task.yml)
+included: /root/grid/ansible_hu/playbooks/tasks/cfg_firewall_task.yml for grid04, grid05, grid06 => (item=tasks/cfg_firewall_task.yml)
+included: /root/grid/ansible_hu/playbooks/tasks/cfg_chrony_task.yml for grid04, grid05, grid06 => (item=tasks/cfg_chrony_task.yml)
+included: /root/grid/ansible_hu/playbooks/tasks/cfg_ssh_task.yml for grid04, grid05, grid06 => (item=tasks/cfg_ssh_task.yml)
+included: /root/grid/ansible_hu/playbooks/tasks/cfg_lmsensors.yml for grid04, grid05, grid06 => (item=tasks/cfg_lmsensors.yml)
+included: /root/grid/ansible_hu/playbooks/tasks/cfg_smartd_task.yml for grid04, grid05, grid06 => (item=tasks/cfg_smartd_task.yml)
+included: /root/grid/ansible_hu/playbooks/tasks/cfg_lldpd_task.yml for grid04, grid05, grid06 => (item=tasks/cfg_lldpd_task.yml)
+included: /root/grid/ansible_hu/playbooks/tasks/cfg_tuned_task.yml for grid04, grid05, grid06 => (item=tasks/cfg_tuned_task.yml)
+included: /root/grid/ansible_hu/playbooks/tasks/tune_sysctl_task.yml for grid04, grid05, grid06 => (item=tasks/tune_sysctl_task.yml)
+included: /root/grid/ansible_hu/playbooks/tasks/tune_scripts_task.yml for grid04, grid05, grid06 => (item=tasks/tune_scripts_task.yml)
+included: /root/grid/ansible_hu/playbooks/tasks/cfg_gmond_eos.yml for grid04, grid05, grid06 => (item=tasks/cfg_gmond_eos.yml)
+included: /root/grid/ansible_hu/playbooks/tasks/pkg_utils_task.yml for grid04, grid05, grid06 => (item=tasks/pkg_utils_task.yml)
+included: /root/grid/ansible_hu/playbooks/tasks/cfg_eos_setup_task.yml for grid04, grid05, grid06 => (item=tasks/cfg_eos_setup_task.yml)
+included: /root/grid/ansible_hu/playbooks/tasks/cfg_eosmgm_setup_task.yml for grid04, grid05, grid06 => (item=tasks/cfg_eosmgm_setup_task.yml)
+
+TASK [Install epel and elrepo repositories] ************************************
+included: /root/grid/ansible_hu/playbooks/tasks/pkg_yum-utils_task.yml for grid04, grid05, grid06 => (item=pkg_yum-utils_task.yml)
+included: /root/grid/ansible_hu/playbooks/tasks/repo_epel_task.yml for grid04, grid05, grid06 => (item=repo_epel_task.yml)
+included: /root/grid/ansible_hu/playbooks/tasks/repo_elrepo_task.yml for grid04, grid05, grid06 => (item=repo_elrepo_task.yml)
+
+TASK [Install yum utils EL9/Fedora] ********************************************
+ok: [grid06]
+ok: [grid05]
+ok: [grid04]
+
+TASK [Dnf prefer IPv4 - EL9] ***************************************************
+ok: [grid04]
+ok: [grid05]
+ok: [grid06]
+
+TASK [Enable EPEL Repository on EL9] *******************************************
+ok: [grid05]
+ok: [grid06]
+ok: [grid04]
+
+TASK [Enable ElRepo Repository on EL 9] ****************************************
+ok: [grid05]
+ok: [grid06]
+ok: [grid04]
+
+TASK [Enable permanently elrepo] ***********************************************
+ok: [grid04]
+ok: [grid05]
+ok: [grid06]
+
+TASK [Enable permanently elrepo-kernel] ****************************************
+ok: [grid04]
+ok: [grid05]
+ok: [grid06]
+
+TASK [Enable permanently elrepo-extras] ****************************************
+ok: [grid04]
+ok: [grid05]
+ok: [grid06]
+
+TASK [Ensure the crb repository is enabled] ************************************
+ok: [grid05]
+ok: [grid04]
+ok: [grid06]
+
+TASK [Install system management and monitoring tools - EL9] ********************
+ok: [grid05]
+ok: [grid04]
+ok: [grid06]
+
+TASK [Create /etc/ipset/ipset.d] ***********************************************
+ok: [grid04]
+ok: [grid05]
+ok: [grid06]
+
+TASK [Install from pip the jc module] ******************************************
+ok: [grid05]
+ok: [grid04]
+ok: [grid06]
+
+TASK [Enable and start cron - RH like] *****************************************
+ok: [grid04]
+ok: [grid05]
+ok: [grid06]
+
+TASK [Set ipset to save on restart] ********************************************
+ok: [grid04]
+ok: [grid05]
+ok: [grid06]
+
+TASK [Enable and start ipset] **************************************************
+ok: [grid04]
+ok: [grid05]
+ok: [grid06]
+
+TASK [User HOME/bin path] ******************************************************
+ok: [grid04]
+ok: [grid05]
+ok: [grid06]
+
+TASK [Set TZ default value] ****************************************************
+ok: [grid04]
+ok: [grid05]
+ok: [grid06]
+
+TASK [Install hardware management and monitoring tools - EL9] ******************
+ok: [grid05]
+ok: [grid06]
+ok: [grid04]
+
+TASK [Install hardware monitoring tools on hardware machines (not vms) - EL9] ***
+ok: [grid04]
+ok: [grid05]
+ok: [grid06]
+
+TASK [Install from pip the jc module] ******************************************
+ok: [grid04]
+ok: [grid05]
+ok: [grid06]
+
+TASK [Sync storage tools] ******************************************************
+ok: [grid04] => (item=md_readd_dev)
+ok: [grid05] => (item=md_readd_dev)
+ok: [grid06] => (item=md_readd_dev)
+ok: [grid04] => (item=md_rm_dev)
+ok: [grid05] => (item=md_rm_dev)
+ok: [grid06] => (item=md_rm_dev)
+ok: [grid04] => (item=md_check)
+ok: [grid05] => (item=md_check)
+ok: [grid06] => (item=md_check)
+ok: [grid04] => (item=md_check_stop)
+ok: [grid05] => (item=md_check_stop)
+ok: [grid06] => (item=md_check_stop)
+ok: [grid04] => (item=md_health)
+ok: [grid05] => (item=md_health)
+ok: [grid06] => (item=md_health)
+ok: [grid04] => (item=iostat_md)
+ok: [grid05] => (item=iostat_md)
+ok: [grid06] => (item=iostat_md)
+ok: [grid04] => (item=list_storage)
+ok: [grid05] => (item=list_storage)
+ok: [grid06] => (item=list_storage)
+ok: [grid04] => (item=smartctl_dump)
+ok: [grid05] => (item=smartctl_dump)
+ok: [grid06] => (item=smartctl_dump)
+ok: [grid04] => (item=smart_temp_report)
+ok: [grid05] => (item=smart_temp_report)
+ok: [grid06] => (item=smart_temp_report)
+
+TASK [Add cron job for smart_temp_report] **************************************
+ok: [grid04]
+ok: [grid05]
+ok: [grid06]
+
+TASK [Raid-check configuration] ************************************************
+ok: [grid04]
+ok: [grid05]
+ok: [grid06]
+
+TASK [Smartd loggind directory] ************************************************
+ok: [grid04]
+ok: [grid05]
+ok: [grid06]
+
+TASK [Raid-check timing (systemd) - EL9] ***************************************
+ok: [grid04]
+ok: [grid05]
+ok: [grid06]
+
+TASK [Raid-check timing (systemd) - start timer] *******************************
+ok: [grid05]
+ok: [grid04]
+ok: [grid06]
+
+TASK [include_tasks] ***********************************************************
+included: /root/grid/ansible_hu/playbooks/tasks/repo_elrepo_task.yml for grid04, grid05, grid06
+
+TASK [Enable ElRepo Repository on EL 9] ****************************************
+ok: [grid05]
+ok: [grid06]
+ok: [grid04]
+
+TASK [Enable permanently elrepo] ***********************************************
+ok: [grid04]
+ok: [grid05]
+ok: [grid06]
+
+TASK [Enable permanently elrepo-kernel] ****************************************
+ok: [grid04]
+ok: [grid05]
+ok: [grid06]
+
+TASK [Enable permanently elrepo-extras] ****************************************
+ok: [grid04]
+ok: [grid05]
+ok: [grid06]
+
+TASK [Install kernel-ml] *******************************************************
+skipping: [grid04]
+skipping: [grid05]
+skipping: [grid06]
+
+TASK [Install kernel-ml EL9] ***************************************************
+ok: [grid05]
+ok: [grid06]
+ok: [grid04]
+
+TASK [Set grub default to 0] ***************************************************
+ok: [grid04]
+ok: [grid05]
+ok: [grid06]
+
+TASK [Set grub timeout to 2] ***************************************************
+ok: [grid04]
+ok: [grid05]
+ok: [grid06]
+
+TASK [Re-create grub conf - EL7] ***********************************************
+skipping: [grid04]
+skipping: [grid05]
+skipping: [grid06]
+
+TASK [Re-create grub conf - EL9] ***********************************************
+changed: [grid04]
+changed: [grid06]
+changed: [grid05]
+
+TASK [Import GPG-KEY-EUGridPMA-RPM-4] ******************************************
+ok: [grid06]
+ok: [grid05]
+ok: [grid04]
+
+TASK [EGI IGTF repo install] ***************************************************
+ok: [grid04]
+ok: [grid05]
+ok: [grid06]
+
+TASK [Install certificates on newer distros (EL8+)] ****************************
+fatal: [grid04]: FAILED! => {"changed": false, "msg": "Unsupported parameters for (ansible.builtin.dnf) module: when. Supported parameters include: allow_downgrade, allowerasing, autoremove, bugfix, cacheonly, conf_file, disable_excludes, disable_gpg_check, disable_plugin, disablerepo, download_dir, download_only, enable_plugin, enablerepo, exclude, install_repoquery, install_weak_deps, installroot, list, lock_timeout, name, nobest, releasever, security, skip_broken, sslverify, state, update_cache, update_only, validate_certs (expire-cache, pkg)."}
+fatal: [grid05]: FAILED! => {"changed": false, "msg": "Unsupported parameters for (ansible.builtin.dnf) module: when. Supported parameters include: allow_downgrade, allowerasing, autoremove, bugfix, cacheonly, conf_file, disable_excludes, disable_gpg_check, disable_plugin, disablerepo, download_dir, download_only, enable_plugin, enablerepo, exclude, install_repoquery, install_weak_deps, installroot, list, lock_timeout, name, nobest, releasever, security, skip_broken, sslverify, state, update_cache, update_only, validate_certs (expire-cache, pkg)."}
+fatal: [grid06]: FAILED! => {"changed": false, "msg": "Unsupported parameters for (ansible.builtin.dnf) module: when. Supported parameters include: allow_downgrade, allowerasing, autoremove, bugfix, cacheonly, conf_file, disable_excludes, disable_gpg_check, disable_plugin, disablerepo, download_dir, download_only, enable_plugin, enablerepo, exclude, install_repoquery, install_weak_deps, installroot, list, lock_timeout, name, nobest, releasever, security, skip_broken, sslverify, state, update_cache, update_only, validate_certs (expire-cache, pkg)."}
+
+PLAY RECAP *********************************************************************
+grid04                     : ok=62   changed=1    unreachable=0    failed=1    skipped=2    rescued=0    ignored=0   
+grid05                     : ok=62   changed=1    unreachable=0    failed=1    skipped=2    rescued=0    ignored=0   
+grid06                     : ok=62   changed=1    unreachable=0    failed=1    skipped=2    rescued=0    ignored=0   
+

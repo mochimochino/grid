@@ -2,7 +2,7 @@
 #install pip3
 
 - name: Install pyhton3-pip 
-  hosts: eos_mgm
+  hosts: eos_fst
   become: yes
 
   tasks:
