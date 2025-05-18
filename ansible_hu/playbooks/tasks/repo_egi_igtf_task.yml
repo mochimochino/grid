@@ -1,5 +1,5 @@
 ---
-- name: Import GPG-KEY-EUGridPMA-RPM-4
+- name: Import GPG-KEY-EUGridPMA-RPM-3
   ansible.builtin.rpm_key:
     state: present
     key: https://repository.egi.eu/sw/production/cas/1/current/GPG-KEY-EUGridPMA-RPM-3

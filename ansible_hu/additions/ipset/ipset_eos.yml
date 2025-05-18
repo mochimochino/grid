@@ -14,8 +14,9 @@ ipset_tables:
   - accept_port_ip:
   - accept_port_ip6:
   - accept_port_net:
-  #「特定のネットワークから」「特定のポートへ」 という、より限定的なアクセス許可
-    - "133.41.115.0"
+  #特定のネットワークから特定のポートへという、より限定的なアクセス許可
+#Zone-Aの入口のIPを設定している。Gridの入口のほうがいいのか？
+    - "133.41.115.0/24,22"
   - accept_port_net6:
   - accept_port_tcp:
   #全ての送信元から指定したTCPポートへのアクセスを許可

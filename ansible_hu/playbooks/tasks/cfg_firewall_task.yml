@@ -59,23 +59,23 @@
 
 # !!!! BETTER ALWAYS RESTART IPTABLES
 #  when: _iptables_v4_update.changed
-
-- name: Iptables v6
-  ansible.builtin.template:
-    src: "{{ playbook_dir }}/../additions/iptables/ip6tables.j2"
-    dest: /etc/sysconfig/ip6tables
-    owner: root
-    group: root
-    mode: '0644'
-    force: true
-    validate: /usr/sbin/ip6tables-restore --test %s
-  register: _iptables_v6_update
-
-- name: Restart ip6tables
-  ansible.builtin.systemd:
-    name: iptables
-    state: restarted
-    enabled: true
+#20250510 NOT ready ipv6
+#- name: Iptables v6
+#  ansible.builtin.template:
+#    src: "{{ playbook_dir }}/../additions/iptables/ip6tables.j2"
+#   dest: /etc/sysconfig/ip6tables
+#    owner: root
+#    group: root
+#    mode: '0644'
+#    force: true
+#    validate: /usr/sbin/ip6tables-restore --test %s
+#  register: _iptables_v6_update
+#
+#- name: Restart ip6tables
+#  ansible.builtin.systemd:
+#    name: iptables
+#   state: restarted
+#    enabled: true
 
 # !!!! BETTER ALWAYS RESTART IPTABLES
 #  when: _iptables_v6_update.changed
