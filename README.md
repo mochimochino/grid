@@ -1,5 +1,243 @@
 # Hiroshima grid
 
+広島サイトのファイルシステム構成についてまとめる。
+
+環境準備-all node-
+・EL9
+ネットワーク設定
+・
+
+
+
+# Central Manager
+items
+
+# Woker Node
+items
+
+# Storage system
+EOS Diopsideのインストール手順
+
+## 必要なもの
+
+### サーバー
+
+- MGM (Management Node)：メタデータ管理、スケジューリング担当
+    
+    grid04,05,06
+    
+- FST (Filesystem/Storage Node)：データを格納するストレージサーバー
+    
+    nfs11,12,13
+    
+- QuarkDB / MQ　サーバー：メタデータベース(QuarkDB)とメッセージキュー(MQ)。MGMサーバー上で動作させる。
+
+### OS
+
+- AlmaLinux9を使用する。（公式では、CentOS 7/8)
+
+### ネットワーク
+
+- IPv4を全ノード間で接続
+- DNSによるホスト名解決
+    
+    （DNS使用していない）
+    
+- NTP (Network Time Protocol)による時間同期。
+    
+    chronyを使用
+    
+- ファイアーウォール設定
+    
+    XRootD：TCP 1094(MGM), 1095(FST)など
+    
+
+### ストレージ
+
+- FST用：データ格納用論理ボリューム
+    
+    RAID
+    
+- MGM用：SSDが望ましい
+
+### ソフトウェアリポジトリ
+
+==要確認==
+
+- **EOS Diopside** およびその依存関係（XRootD など）を提供する YUM/DNF リポジトリへのアクセス。
+- OS標準リポジトリ、EPELリポジトリなど。
+
+### 依存ソフトウェア
+
+- XRootD
+- jemalloc(メモリ管理ライブラリ）
+- FUSE（ファイルシステムマウント用）
+
+## 手順
+
+### システム設定
+
+- NTP設定と時間同期を確認。
+    
+    chrony
+    
+- ホスト名、ネットワーク設定
+- ファイアウォール設定
+- SELinuxの設定
+
+### リポジトリの設定
+
+- 全ノードに、EOSや依存関係（XRootDなど）のリポジトリを追加設定
+
+repo_eos_task.yml
+
+- EPELリポジトリなども有効化する。
+
+repo_epel_task.yml
+
+- **ELRepo（Enterprise Linux Repository）リポジトリの有効化**に関する設定
+
+**repo_elrepo_task.yml**
+
+- EGI（European Grid Infrastructure）によるCA（Certificate Authority）のリポジトリを設定
+
+**repo_egi_igtf_task.yml**
+
+- WLCG用のリポジトリ（いらない気がする）
+
+**repo_wlcg_task.yml**
+
+### パッケージのインストール
+
+- MGM：
+    - eos-server
+    - eos-mgm
+    - eos-quarkdb
+    - xrootd
+    - eos-client
+    - jemalloc
+- FST：
+    - eos-server
+    - eos-fst
+    - xrootd
+    - eos-client
+    - jemalloc
+
+パッケージインストール用Playbook
+
+システム基盤用
+
+cronie,
+
+crontabs,
+
+cronie-anacron
+
+rsync
+
+cfg_firewall_task.yml：
+
+Chrony
+
+cfg_ssh_task.yml：
+
+tune_sysctl_task.yml：
+
+ストレージ用
+
+mdraid_conf_task.yml：
+
+smartctl_dump.py：
+
+cfg_smartd_task.yml：
+
+  
+
+EOS用パッケージ
+
+pkg_eos_mgm_task.yml ：
+
+pkg_eos_fst_task.yml ：
+
+XRootDの設定用
+
+xrd.cf.fst,：
+
+xrd.cf.mgm：
+
+xrd.cf.mq：
+
+QuarkDB用
+
+quarkdb.pass：
+
+xrd.cf.quarkdb0.j2：
+
+監視用
+
+Ganglia (gmond)**4...**: システム監視エージェント。
+
+cfg_gmond_eos.yml：
+
+Telegraf**9...**: InfluxDataの監視エージェント。
+
+cfg_telegraf_task.yml：
+
+Smartd**14...**: ディスクのSMART監視デーモン。
+
+lmsensors**14...**: ハードウェアセンサー情報の取得ツール。
+
+### FSTストレージ準備
+
+- FSTノードに接続されたデータ用ディスクをフォーマット（例: mkfs.xfs)
+- マウントポイント用にディレクトリを作成。
+- /etc/fstabに追記し、永続的にマウントする。
+- マウントポイントの所有者をEOSサービス実行ユーザーに設定。
+
+### 設定ファイルの編集
+
+- 全ノード：/etc/sysconfig/eosまたはeos_envで環境変数を設定。
+    - EOS_INSTANCE_NAME
+    - EOS_MGM_HOST
+    - EOS_BROKER_URL
+    - EOS_GEOTAG
+- MGMノード
+    - /etc/xrd.cf.mgm：XRootDの設定
+    - QuarkDB/MQの設定ファイル
+- FSTノード
+    - /yec/xrd.cf.fst：XRootDの設定
+
+### サービス起動と自動起動設定
+
+- systemctl startとsystemctl enableを使用し、サービスの起動を有効化。
+    - ただし、サービスの起動順序に注意が必要
+
+### EOS初期設定
+
+MGM上でeosコマンドを使用
+
+- FSTノードをEOSクラスターに追加: `eos node add <fst_host>:<port> <config_cmd>`
+- ストレージスペースを定義: `eos space define <space_name> ...`
+- FST上のファイルシステムをスペースに追加: `eos fs add -s <space_name> <node_uuid> <path> ...`
+- 状態を確認: `eos node ls`, `eos space ls`, `eos fs ls`
+
+### セキュリティ設定
+
+- 認証方式を設定
+
+### 監視とBackup
+
+- Gangliaで監視設定をする。
+- MGMのメタデータの定期的なバクアップ手順を確立
+
+
+
+
+
+
+# 以前のもの
+# Hiroshima grid
+
 広島サイトの構成についてまとめる。
 
 **VOBOX
