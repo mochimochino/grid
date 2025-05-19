@@ -1,7 +1,7 @@
 - hosts: "{{ target | default('eos_mgm') }}"
   gather_facts: True #False
   vars:
-    chrony_base_ip: "pub85"
+    chrony_base_ip: "priv10"
 
     profile: hiroshima
 

@@ -1,4 +1,4 @@
-server 10.20.42.1 iburst prefer #Hiroshima university NTP
+#server 10.20.42.1 iburst prefer #Hiroshima university NTP
 pool 0.jp.pool.ntp.org iburst
 
 stratumweight 0.01
