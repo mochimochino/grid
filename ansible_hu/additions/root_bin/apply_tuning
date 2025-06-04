@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+exec >/root/tuning.log 2>&1
+
+enable_if_present () {
+    local eth tunable is_present
+    eth="${1}"
+    tunable="${2}"
+    is_present=$(ethtool -k ${eth} | grep ${tunable} | grep -v fixed)
+    [[ -n "${is_present}" ]] && ethtool -K "${eth}" "${tunable}" on
+    }
+
+TUNING_DIR="/root/tuning.d"
+
+# Apply generic (non-eth related) tuning
+for TUNE in $(find ${TUNING_DIR} -name '*.tune' | sort); do ${TUNE}; done
+
+# Apply network (on eth device) tuning
+eth_list=$(for eth_path in $(find /sys/class/net -type l); do [[ -n $(grep virtual <<< $(realpath ${eth_path})) ]] && continue; [[ $(< ${eth_path}/operstate) == "down" ]] && continue; echo $(basename ${eth_path}); done)
+
+for ETH_TUNE in $(find ${TUNING_DIR} -name '*.tune_eth' | sort); do
+    # for each UP and NOT VLAN eth
+    for eth in ${eth_list}; do
+        ${ETH_TUNE} "${eth}"
+    done
+done
+

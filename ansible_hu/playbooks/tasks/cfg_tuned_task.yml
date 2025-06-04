@@ -1,9 +1,9 @@
 ---
 - include_tasks: pkg_tuned_task.yml
 
-- name: add ISS tuning profile
+- name: add Hiroshima tuning profile
   ansible.builtin.copy:
-    src: "{{ playbook_dir }}/../additions/tuned/iss"
+    src: "{{ playbook_dir }}/../additions/tuned/hiroshima"
     dest: /etc/tuned/
     owner: root
     group: root
