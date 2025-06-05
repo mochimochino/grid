@@ -20,17 +20,17 @@
     enablerepo: "epel"
   when: ansible_facts[ 'distribution' ] == 'AlmaLinux'
 
-- name: Create htop conf dir
-  ansible.builtin.file:
-    path: /root/.config/htop
-    state: directory
+#- name: Create htop conf dir
+#  ansible.builtin.file:
+#    path: /root/.config/htop
+#    state: directory
 
-- name: Configure htop EL9
-  ansible.builtin.copy:
-    src: "{{ playbook_dir }}/../additions/htop/htoprc_el9"
-    dest: /root/.config/htop/htoprc
-    owner: root
-    group: root
-    mode: '0644'
-    force: true
-  when: ansible_facts[ 'distribution' ] == 'AlmaLinux' or ansible_facts[ 'distribution' ] == 'Fedora'
+#- name: Configure htop EL9
+#  ansible.builtin.copy:
+#    src: "{{ playbook_dir }}/../additions/htop/htoprc_el9"
+#    dest: /root/.config/htop/htoprc
+#    owner: root
+#    group: root
+#    mode: '0644'
+#    force: true
+#  when: ansible_facts[ 'distribution' ] == 'AlmaLinux' or ansible_facts[ 'distribution' ] == 'Fedora'

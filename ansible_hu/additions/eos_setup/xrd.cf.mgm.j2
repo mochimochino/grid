@@ -1,0 +1,152 @@
+###########################################################
+set myName = {{ _eos_site_name }}
+all.sitename $myName
+
+###########################################################
+xrootd.fslib libXrdEosMgm.so
+xrootd.seclib libXrdSec.so
+xrootd.async off nosf
+xrootd.chksum adler32
+###########################################################
+
+xrd.sched mint 8 maxt 256 idle 60
+xrd.timeout hail 30 idle 300 kill 20 read 20
+
+###########################################################
+all.export / nolock
+all.role manager
+
+###########################################################
+xrd.port {{ _eos_mgm_xrd_port }}
+
+###########################################################
+oss.fdlimit * max
+
+###########################################################
+# UNIX authentication
+sec.protocol unix
+
+# SSS authentication
+sec.protocol sss -c /etc/eos.keytab -s /etc/eos.keytab
+
+# GSI authentication
+##sec.protocol gsi -d:0 -md:sha256:sha1:md5 -crl:ignore -moninfo:1 -showdn:true -cert:/etc/grid-security/hostcert.pem -key:/etc/grid-security/hostkey.pem
+##sec.protparm gsi -gmapopt:null -gmapto:0 -vomsfun:/opt/eos/xrootd/lib64/libXrdSecgsiVOMS.so -vomsat:extract -vomsfunparms:certfmt=pem|vos=ops,dteam|dbg
+
+###########################################################
+sec.protbind localhost.localdomain sss unix
+sec.protbind localhost sss unix
+
+##sec.protbind * only gsi sss unix
+sec.protbind * only sss unix
+
+###########################################################
+mgmofs.fs /
+mgmofs.targetport {{ _eos_fst_xrd_port }}
+
+mgmofs.centraldrain true
+
+mgmofs.authlib /usr/lib64/libXrdAliceTokenAcc.so
+mgmofs.authorize 1
+
+alicetokenacc.multiprocess 32
+
+alicetokenacc.truncateprefix /eos/alice/grid
+alicetokenacc.noauthzhost    localhost
+alicetokenacc.noauthzhost    localhost.localdomain
+alicetokenacc.noauthzhost    sev.spacescience.ro
+alicetokenacc.noauthzhost    46.243.114.230
+alicetokenacc.noauthzhost    2001:b30:4210::aa
+
+###########################################################
+#mgmofs.trace all debug
+
+# this URL can be overwritten by EOS_BROKER_URL defined in /etc/sysconfig/eos
+mgmofs.broker root://{{ _eos_env_mgmhost }}:1097//eos/
+
+# this name can be overwritten by EOS_INSTANCE_NAME defined in /etc/sysconfig/eos
+mgmofs.instance {{ _eos_env_instance }}
+
+# configuration, namespace , transfer and authentication export directory
+mgmofs.configdir /var/eos/config
+mgmofs.metalog /var/eos/md
+mgmofs.txdir /var/eos/tx
+mgmofs.authdir /var/eos/auth
+mgmofs.archivedir /var/eos/archive
+mgmofs.qosdir /var/eos/qos
+
+# report store path
+mgmofs.reportstorepath /var/eos/report
+
+# this defines the default config to load
+mgmofs.autoloadconfig default
+mgmofs.autosaveconfig true
+
+# QoS configuration file
+# mgmofs.qoscfg /var/eos/qos/qos.conf
+
+###########################################################
+# Config Engine Configuration
+mgmofs.cfgtype quarkdb
+
+# this has to be defined if we have a failover configuration via alias - can be overwritten by EOS_MGM_ALIAS in /etc/sysconfig/eos
+mgmofs.alias {{ _eos_env_mgm_alias }}"
+
+###########################################################
+# Set the FST gateway host and port
+# mgmofs.fstgw someproxy.cern.ch:3001
+
+#-------------------------------------------------------------------------------
+# Configuration for the authentication plugin EosAuth
+#-------------------------------------------------------------------------------
+# Set the number of authentication worker threads running on the MGM
+mgmofs.auththreads 16
+
+# Set the front end port number for incoming authentication requests
+#mgmofs.authport 15555
+
+# By default we listen only on localhost connections - set to 0 if you want to allow remote access
+#mgmofs.authlocal 1
+
+#-------------------------------------------------------------------------------
+# Set the namespace plugin implementation
+#-------------------------------------------------------------------------------
+mgmofs.nslib /usr/lib64/libEosNsQuarkdb.so
+
+# Quarkdb custer configuration used for the namespace
+mgmofs.qdbcluster {{ _eos_qdb_list }}
+mgmofs.qdbpassword_file {{ _eos_qdb_passfile }}
+
+#-------------------------------------------------------------------------------
+# Configuration for the MGM workflow engine
+#-------------------------------------------------------------------------------
+
+# The SSI protocol buffer endpoint for notification messages from "proto" workflow actions
+#mgmofs.protowfendpoint HOSTNAME.2NDLEVEL.TOPLEVEL:10955
+#mgmofs.protowfresource /SSI_RESOURCE
+
+# Use gRPC?
+# mgmofs.protowfusegrpc true
+
+if exec xrootd
+    xrd.protocol XrdHttp:{{ _eos_mgm_http_port }} libXrdHttp.so
+    http.exthandler EosMgmHttp libEosMgmHttp.so eos::mgm::http::redirect-to-https=1
+    http.trace  false
+
+    # host cert required !!!
+    http.exthandler xrdtpc libXrdHttpTPC.so
+    xrd.tls  /etc/grid-security/hostcert.pem /etc/grid-security/hostkey.pem
+    xrd.tlsca  certdir /etc/grid-security/certificates/
+
+    # X509 Stuff
+    # http.secxtractor  libXrdVoms.so
+    # http.gridmap  /etc/grid-security/grid-mapfile
+
+    # Macaroons
+    # mgmofs.macaroonslib  libXrdMacaroons.so libXrdAccSciTokens.so
+    # macaroons.secretkey  /etc/eos.macaroon.secret
+    # macaroons.trace  all
+fi
+
+xrootd.monitor all flush 60s window 30s dest files info user {{ _eos_monitor_dst }}
+

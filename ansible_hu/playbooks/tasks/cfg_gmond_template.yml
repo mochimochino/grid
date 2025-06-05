@@ -29,14 +29,14 @@
     - 01-host.conf
     - 90-metrics.conf
 
-- name: Gmond conf.d cluster def
-  ansible.builtin.template:
-    src: "{{ playbook_dir }}/../additions/gmond_conf/conf/02-cluster.conf.j2"
-    dest: /etc/ganglia/conf.d/02-cluster.conf
-    owner: root
-    group: root
-    mode: '0644'
-    force: true
+#- name: Gmond conf.d cluster def
+#  ansible.builtin.template:
+#    src: "{{ playbook_dir }}/../additions/gmond_conf/conf/02-cluster.conf.j2"
+#    dest: /etc/ganglia/conf.d/02-cluster.conf
+#    owner: root
+#    group: root
+#    mode: '0644'
+#    force: true
 
 - name: Gmond conf.d udp_send_1 def
   ansible.builtin.template:
