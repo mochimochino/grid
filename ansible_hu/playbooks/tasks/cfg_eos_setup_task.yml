@@ -1,20 +1,21 @@
 ---
-- name: Sync eos common files
-  ansible.builtin.copy:
-    dest: /etc/
-    src: "{{ playbook_dir }}/../additions/eos_setup/{{ eos_common_files }}"
-    owner: daemon
-    group: daemon
-    mode: '0400'
-    force: true
-  loop_control:
-    loop_var: eos_common_files
-  with_items:
-    - quarkdb.pass
-    - eos.keytab
-    - xrd.cf.fst
-    - xrd.cf.mgm
-    - xrd.cf.mq
+# デフォルトで初めに設定されるはず
+#- name: Sync eos common files
+#  ansible.builtin.copy:
+#    dest: /etc/
+#    src: "{{ playbook_dir }}/../additions/eos_setup/{{ eos_common_files }}"
+#    owner: daemon
+#    group: daemon
+#    mode: '0400'
+#    force: true
+#  loop_control:
+#    loop_var: eos_common_files
+#  with_items:
+#    - quarkdb.pass
+#    - eos.keytab
+#    - xrd.cf.fst
+#    - xrd.cf.mgm
+#    - xrd.cf.mq
 
 - name: mkdir EOS directories
   ansible.builtin.file:
