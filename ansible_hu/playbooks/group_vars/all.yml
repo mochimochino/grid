@@ -1,0 +1,40 @@
+#---------------------------------------
+#EOS Configuration vars
+#---------------------------------------
+
+_eos_site_name: "Hiroshima"
+
+_eos_env_instance: "eoshu"
+
+#---------------------------------------
+#port setting
+#---------------------------------------
+_eos_mgm_xrd_port: 1094
+
+_eos_fst_xrd_port: 1095
+
+#(option)
+_eos_mgm_http_port: 8443
+
+_eos_fst_http_port: 8001
+
+#---------------------------------------
+#MGM HA
+#---------------------------------------
+
+_eos_env_mgm_alias: "grid04.aligrid.hiroshima-u.ac.jp"
+
+_eos_env_mgmhost: "{{ ansible_facts['fqdn'] }}"
+
+#---------------------------------------
+#QuarkDB cluster setting
+#---------------------------------------
+_eos_qdb_list: "grid04.aligrid.hiroshima-u.ac.jp:7777,grid05.aligrid.hiroshima-u.ac.jp:7777,grid06.aligrid.hiroshima-u.ac.jp:7777"
+
+_eos_qdb_passfile: "/etc/quarkdb.pass" # "/etc/eos.keytab" "/etc/quarkdb.pass"
+
+#--------------------------------------
+#monitor
+#--------------------------------------
+
+_eos_monitor_dst: "file:/var/log/eos/mgm/xrdmon.log"

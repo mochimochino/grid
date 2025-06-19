@@ -51,7 +51,7 @@
 #      - "tasks/tune_scripts_task.yml"
 #      - "tasks/cfg_gmond_eos.yml"
 #      - "tasks/pkg_utils_task.yml"
-#      - "tasks/pkg_eos_fst_task.yml"
+      - "tasks/pkg_eos_fst_task.yml"
       - "tasks/cfg_eos_setup_task.yml"
 
 

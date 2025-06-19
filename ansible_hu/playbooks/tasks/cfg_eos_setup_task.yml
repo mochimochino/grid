@@ -23,6 +23,17 @@
     force: true
   ignore_errors: true
 
+- name: Generate config files from templates
+  ansible.builtin.template:
+    src: "{{ playbook_dir }}/../additions/eos_setup/{{ item.src }}"
+    dest: "/etc/{{ item.dest }}"
+    owner: root
+    group: root
+    mode: '0644'
+  with_items:
+    - { src: 'xrd.cf.fst.j2', dest: 'xrd.cf.fst' }
+    - { src: 'xrd.cf.mgm.j2', dest: 'xrd.cf.mgm' }
+
 - name: mkdir EOS directories
   ansible.builtin.file:
     owner: daemon
