@@ -1,0 +1,25 @@
+---
+- name: Restart EOS MGM and QDB services
+  hosts: eos_mgm
+  become: yes
+
+  tasks:
+    - name: Stop eos5-mgm@mgm-service
+      ansible.builtin.systemd:
+        name: eos5-mgm@mgm
+        state: stopped
+
+    - name: Stop qdb service
+      ansible.builtin.systemd:
+        name: eos5-qdb@qdb
+        state: stopped
+
+    - name: Start qdb service
+      ansible.builtin.systemd:
+        name: eos5-qdb@qdb
+        state: started
+
+    - name: Start eos5-mgm@mgm-service
+      ansible.builtin.systemd:
+        name: eos5-mgm@mgm
+        state: started

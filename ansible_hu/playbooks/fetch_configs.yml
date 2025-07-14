@@ -1,0 +1,15 @@
+---
+- hosts: all
+  vars:
+    fetch_files:
+      - /etc/xrd.cf.mgm
+      - /etc/xrd.cf.fst
+  tasks:
+    - name: fetch config files from all nodes
+      ansible.builtin.fetch: 
+
+        src: "{{ item }}"
+        dest: "/root/fetch_config/{{ inventory_hostname }}/"
+        flat: yes
+
+      loop: "{{ fetch_files }}"
