@@ -1,0 +1,23 @@
+---
+- name: Collect EOS FST configuration files
+  hosts: eos_fst
+  become: yes
+  gather_facts: no
+
+  vars:
+    source_files:
+      - /etc/sysconfig/eos_env
+      - /etc/xrd.cf.fst
+      - /etc/xrd.cf.quarkdb
+      - /etc/xrd.cf.quarkdb0
+      - /etc/eos/config/generic/all
+    
+    destination_base: "/root/grid/ansible_hu/to_check/eos_configs"
+
+  tasks:
+    - name: Collect specified files from each MGM
+      ansible.builtin.fetch:
+        src: "{{ item }}"
+        dest: "{{ destination_base }}/"
+        fail_on_missing: no # ファイルが存在しなくてもエラーにしない
+      loop: "{{ source_files }}"
