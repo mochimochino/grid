@@ -1,6 +1,6 @@
 ###########################################################
 set myName = Hiroshima
-all.sitename $myName
+all.sitename ALICE::Hiroshima::EOS
 
 ###########################################################
 xrootd.fslib libXrdEosMgm.so
@@ -51,7 +51,7 @@ mgmofs.authorize 1
 
 alicetokenacc.multiprocess 32
 
-alicetokenacc.truncateprefix /eos/alice/grid
+alicetokenacc.truncateprefix /eos/hu/alice
 alicetokenacc.noauthzhost    localhost
 alicetokenacc.noauthzhost    localhost.localdomain
 
@@ -62,7 +62,7 @@ alicetokenacc.noauthzhost    localhost.localdomain
 mgmofs.broker root://grid04.aligrid.hiroshima-u.ac.jp:1097//eos/
 
 # this name can be overwritten by EOS_INSTANCE_NAME defined in /etc/sysconfig/eos
-mgmofs.instance eoshu
+#mgmofs.instance eoshu
 
 # configuration, namespace , transfer and authentication export directory
 mgmofs.configdir /var/eos/config
@@ -88,7 +88,7 @@ mgmofs.cfgtype quarkdb
 
 # this has to be defined if we have a failover configuration via alias - can be overwritten by EOS_MGM_ALIAS in /etc/sysconfig/eos
 mgmofs.alias grid04.aligrid.hiroshima-u.ac.jp"
-
+#Neeeeeeeed edit (alias)
 ###########################################################
 # Set the FST gateway host and port
 # mgmofs.fstgw someproxy.cern.ch:3001
@@ -145,5 +145,5 @@ if exec xrootd
     # macaroons.trace  all
 fi
 
-xrootd.monitor all flush 60s window 30s dest files info user file:/var/log/eos/mgm/xrdmon.log
-
+#xrootd.monitor all flush 60s window 30s dest files info user file:/var/log/eos/mgm/xrdmon.log
+xrootd.monitor all auth flush 30s window 5s info level all dest vobox.your.domain:9930

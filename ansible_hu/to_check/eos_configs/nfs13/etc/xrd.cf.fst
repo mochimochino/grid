@@ -4,7 +4,7 @@ set MGM=grid04.aligrid.hiroshima-u.ac.jp
 
 ###########################################################
 set myName = Hiroshima
-all.sitename $myName
+all.sitename ALICE::Hiroshima::EOS
 
 xrootd.fslib -2 libXrdEosFst.so
 xrootd.async off nosf
@@ -73,5 +73,6 @@ if exec xrootd
     xrd.tlsca  certdir /etc/grid-security/certificates/
 fi
 
-xrootd.monitor all flush 60s window 30s dest files info user file:/var/log/eos/mgm/xrdmon.log
+#xrootd.monitor all flush 60s window 30s dest files info user file:/var/log/eos/mgm/xrdmon.log
+xrootd.monitor all auth flush 30s window 5s info level all dest vobox.your.domain:9930
 
