@@ -1,0 +1,76 @@
+fs:/eos/nfs11.aligrid.hiroshima-u.ac.jp:1095/fst/eos1 => bootcheck=0 bootsenttime=1752754945 configstatus=rw drainperiod=86400 fsck_refresh_interval=7200 graceperiod=3600 headroom=5100000000 host=nfs11.aligrid.hiroshima-u.ac.jp hostport=nfs11.aligrid.hiroshima-u.ac.jp:1095 id=1 path=/eos1 port=1095 queue=/eos/nfs11.aligrid.hiroshima-u.ac.jp:1095/fst queuepath=/eos/nfs11.aligrid.hiroshima-u.ac.jp:1095/fst/eos1 scan_disk_interval=14400 scan_ns_interval=259200 scan_ns_rate=50 scan_rain_interval=2419200 scaninterval=1814400 scanrate=100 schedgroup=default.0 uuid=9ac28717-c447-49dc-abed-a50701741da3 
+fs:/eos/nfs12.aligrid.hiroshima-u.ac.jp:1095/fst/eos1 => bootcheck=0 bootsenttime=1752754869 configstatus=rw drainperiod=86400 fsck_refresh_interval=7200 graceperiod=3600 headroom=5100000000 host=nfs12.aligrid.hiroshima-u.ac.jp hostport=nfs12.aligrid.hiroshima-u.ac.jp:1095 id=2 path=/eos1 port=1095 queue=/eos/nfs12.aligrid.hiroshima-u.ac.jp:1095/fst queuepath=/eos/nfs12.aligrid.hiroshima-u.ac.jp:1095/fst/eos1 scan_disk_interval=14400 scan_ns_interval=259200 scan_ns_rate=50 scan_rain_interval=2419200 scaninterval=1814400 scanrate=100 schedgroup=default.1 uuid=f995a3de-c6e1-4806-9082-3c5e3c20691f 
+fs:/eos/nfs13.aligrid.hiroshima-u.ac.jp:1095/fst/eos1 => bootcheck=0 bootsenttime=1752754873 configstatus=rw drainperiod=86400 fsck_refresh_interval=7200 graceperiod=3600 headroom=5100000000 host=nfs13.aligrid.hiroshima-u.ac.jp hostport=nfs13.aligrid.hiroshima-u.ac.jp:1095 id=3 path=/eos1 port=1095 queue=/eos/nfs13.aligrid.hiroshima-u.ac.jp:1095/fst queuepath=/eos/nfs13.aligrid.hiroshima-u.ac.jp:1095/fst/eos1 scan_disk_interval=14400 scan_ns_interval=259200 scan_ns_rate=50 scan_rain_interval=2419200 scaninterval=1814400 scanrate=100 schedgroup=default.2 uuid=7dee6080-89f2-4e7b-a0ac-7e9d58823e2e 
+global:/config/eoshu/node/nfs11.aligrid.hiroshima-u.ac.jp:1095#stat.hostport => nfs11.aligrid.hiroshima-u.ac.jp:1095
+global:/config/eoshu/node/nfs11.aligrid.hiroshima-u.ac.jp:1095#status => on
+global:/config/eoshu/node/nfs12.aligrid.hiroshima-u.ac.jp:1095#stat.hostport => nfs12.aligrid.hiroshima-u.ac.jp:1095
+global:/config/eoshu/node/nfs12.aligrid.hiroshima-u.ac.jp:1095#status => on
+global:/config/eoshu/node/nfs13.aligrid.hiroshima-u.ac.jp:1095#stat.hostport => nfs13.aligrid.hiroshima-u.ac.jp:1095
+global:/config/eoshu/node/nfs13.aligrid.hiroshima-u.ac.jp:1095#status => on
+global:/config/eoshu/space/default#balancer => off
+global:/config/eoshu/space/default#balancer.node.ntx => 2
+global:/config/eoshu/space/default#balancer.node.rate => 25
+global:/config/eoshu/space/default#balancer.threshold => 20
+global:/config/eoshu/space/default#converter => off
+global:/config/eoshu/space/default#converter.ntx => 2
+global:/config/eoshu/space/default#drainer.node.nfs => 5
+global:/config/eoshu/space/default#drainer.node.ntx => 2
+global:/config/eoshu/space/default#drainer.node.rate => 25
+global:/config/eoshu/space/default#drainperiod => 86400
+global:/config/eoshu/space/default#filearchivedgc => off
+global:/config/eoshu/space/default#fsck_refresh_interval => 7200
+global:/config/eoshu/space/default#geobalancer => off
+global:/config/eoshu/space/default#geobalancer.ntx => 10
+global:/config/eoshu/space/default#geobalancer.threshold => 5
+global:/config/eoshu/space/default#graceperiod => 3600
+global:/config/eoshu/space/default#groupbalancer => off
+global:/config/eoshu/space/default#groupbalancer.engine => std
+global:/config/eoshu/space/default#groupbalancer.file_attempts => 50
+global:/config/eoshu/space/default#groupbalancer.max_file_size => 16G
+global:/config/eoshu/space/default#groupbalancer.max_threshold => 0
+global:/config/eoshu/space/default#groupbalancer.min_file_size => 1G
+global:/config/eoshu/space/default#groupbalancer.min_threshold => 0
+global:/config/eoshu/space/default#groupbalancer.ntx => 10
+global:/config/eoshu/space/default#groupbalancer.threshold => 5
+global:/config/eoshu/space/default#groupmod => 24
+global:/config/eoshu/space/default#groupsize => 0
+global:/config/eoshu/space/default#headroom => 5100000000
+global:/config/eoshu/space/default#quota => off
+global:/config/eoshu/space/default#scan_disk_interval => 14400
+global:/config/eoshu/space/default#scan_ns_interval => 259200
+global:/config/eoshu/space/default#scan_ns_rate => 50
+global:/config/eoshu/space/default#scan_rain_interval => 2419200
+global:/config/eoshu/space/default#scaninterval => 1814400
+global:/config/eoshu/space/default#scanrate => 100
+global:/config/eoshu/space/default#taperestapi.stage => off
+global:/config/eoshu/space/default#taperestapi.status => off
+global:/config/eoshu/space/default#tgc.availbytes => 0
+global:/config/eoshu/space/default#tgc.qryperiodsecs => 320
+global:/config/eoshu/space/default#tgc.totalbytes => 1000000000000000000
+global:/config/eoshu/space/default#tracker => off
+global:/config/eoshu/space/default#wfe => off
+global:/config/eoshu/space/default#wfe.interval => 10
+global:/config/eoshu/space/default#wfe.ntx => 1
+map:/00/ => /eos/hu/alice/00/
+map:/01/ => /eos/hu/alice/01/
+map:/02/ => /eos/hu/alice/02/
+map:/03/ => /eos/hu/alice/03/
+map:/04/ => /eos/hu/alice/04/
+map:/05/ => /eos/hu/alice/05/
+map:/06/ => /eos/hu/alice/06/
+map:/07/ => /eos/hu/alice/07/
+map:/08/ => /eos/hu/alice/08/
+map:/09/ => /eos/hu/alice/09/
+map:/10/ => /eos/hu/alice/10/
+map:/11/ => /eos/hu/alice/11/
+map:/12/ => /eos/hu/alice/12/
+map:/13/ => /eos/hu/alice/13/
+map:/14/ => /eos/hu/alice/14/
+map:/15/ => /eos/hu/alice/15/
+vid:2:root =>  eos.rgid=0 eos.ruid=0 mgm.cmd=vid mgm.subcmd=set mgm.vid.cmd=membership mgm.vid.key=2:root mgm.vid.source.uid=2 mgm.vid.target.sudo=true
+vid:https:"<pwd>":gid =>  eos.rgid=0 eos.ruid=0 mgm.cmd=vid mgm.subcmd=set mgm.vid.auth=https mgm.vid.cmd=map mgm.vid.gid=0 mgm.vid.key=<key> mgm.vid.pattern=<pwd> mgm.vid.uid=0
+vid:https:"<pwd>":uid =>  eos.rgid=0 eos.ruid=0 mgm.cmd=vid mgm.subcmd=set mgm.vid.auth=https mgm.vid.cmd=map mgm.vid.gid=0 mgm.vid.key=<key> mgm.vid.pattern=<pwd> mgm.vid.uid=0
+vid:sss:"<pwd>":gid =>  eos.rgid=0 eos.ruid=0 mgm.cmd=vid mgm.subcmd=set mgm.vid.auth=sss mgm.vid.cmd=map mgm.vid.gid=0 mgm.vid.key=<key> mgm.vid.pattern=<pwd> mgm.vid.uid=0
+vid:sss:"<pwd>":uid =>  eos.rgid=0 eos.ruid=0 mgm.cmd=vid mgm.subcmd=set mgm.vid.auth=sss mgm.vid.cmd=map mgm.vid.gid=0 mgm.vid.key=<key> mgm.vid.pattern=<pwd> mgm.vid.uid=0
+vid:unix:"<pwd>":gid =>  eos.rgid=0 eos.ruid=0 mgm.cmd=vid mgm.subcmd=set mgm.vid.auth=unix mgm.vid.cmd=map mgm.vid.gid=1395 mgm.vid.key=<key> mgm.vid.pattern=<pwd> mgm.vid.uid=10367
+vid:unix:"<pwd>":uid =>  eos.rgid=0 eos.ruid=0 mgm.cmd=vid mgm.subcmd=set mgm.vid.auth=unix mgm.vid.cmd=map mgm.vid.gid=1395 mgm.vid.key=<key> mgm.vid.pattern=<pwd> mgm.vid.uid=10367

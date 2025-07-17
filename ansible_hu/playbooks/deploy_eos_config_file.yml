@@ -1,0 +1,28 @@
+---
+- name: Deploy EOS MGM configuration files
+  hosts: eos_mgm
+  become: yes
+  gather_facts: no
+
+  vars:
+    source_base: "/root/grid/ansible_hu/to_check/eos_configs"
+    
+    destination_files:
+      - /etc/sysconfig/eos_env
+      - /etc/xrd.cf.mgm
+      - /etc/xrd.cf.quarkdb0
+
+  tasks:
+    - name: Deploy specified files to each MGM
+      ansible.builtin.copy:
+        src: "{{ source_base }}/{{ inventory_hostname }}{{ item }}"
+        
+        dest: "{{ item }}"
+        
+        backup: yes
+        
+        # owner: root
+        # group: root
+        # mode: '0644'
+        
+      loop: "{{ destination_files }}"
