@@ -59,8 +59,8 @@ alicetokenacc.noauthzhost    localhost.localdomain
 #mgmofs.trace all debug
 
 # this URL can be overwritten by EOS_BROKER_URL defined in /etc/sysconfig/eos
-mgmofs.broker root://grid04.aligrid.hiroshima-u.ac.jp:1097//eos/
-
+#mgmofs.broker root://grid04.aligrid.hiroshima-u.ac.jp:1097//eos/
+mgmofs.broker root://eos.aligrid.hiroshima-u.ac.jp:1097//eos/
 # this name can be overwritten by EOS_INSTANCE_NAME defined in /etc/sysconfig/eos
 #mgmofs.instance eoshu
 
@@ -87,7 +87,7 @@ mgmofs.autosaveconfig true
 mgmofs.cfgtype quarkdb
 
 # this has to be defined if we have a failover configuration via alias - can be overwritten by EOS_MGM_ALIAS in /etc/sysconfig/eos
-mgmofs.alias grid04.aligrid.hiroshima-u.ac.jp"
+mgmofs.alias eos.aligrid.hiroshima-u.ac.jp
 #Neeeeeeeed edit (alias)
 ###########################################################
 # Set the FST gateway host and port

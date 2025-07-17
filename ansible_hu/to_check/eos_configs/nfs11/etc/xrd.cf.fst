@@ -39,7 +39,8 @@ ofs.tpc pgm /opt/eos/xrootd/bin/xrdcp
 
 ###########################################################
 # this URL can be overwritten by EOS_BROKER_URL defined /etc/sysconfig/xrd
-fstofs.broker root://grid04.hiroshima-u.ac.jp:1097//eos/
+fstofs.broker root://eos.aligrid.hiroshima-u.ac.jp:1097//eos/
+#fstofs.broker root://grid04.hiroshima-u.ac.jp:1097//eos/
 fstofs.autoboot true
 fstofs.quotainterval 10
 fstofs.metalog /var/eos/md/
