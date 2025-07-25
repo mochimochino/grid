@@ -1,0 +1,57 @@
+---
+- name: check packeges
+  hosts: all
+  become: yes
+  tasks:
+    - name: dnf update
+      ansible.builtin.dnf:
+        name: '*'
+        state: latest
+      
+    - name: install packege
+      ansible.builtin.dnf:
+        name:
+          - firewalld
+          - python3-firewall
+          - net-tools
+        state: present
+
+- name: setting mgm firewall
+  hosts: eos_mgm
+  become: yes
+  vars:
+    mgm_ports:
+      - 1094/tcp
+      - 7777/tcp
+      - 8883/tcp
+  tasks:
+    - name: status firewall
+      ansible.builtin.service:
+        name: firewalld
+        state: started
+        enabled: yes
+
+    - name: open port
+      ansible.posix.firewalld:
+        port: "{{ item }}"
+        permanent: yes
+        state: enabled
+        immediate: yes
+      loop: "{{ mgm_ports }}"
+
+- name: setting fst firewal
+  hosts: eos_fst
+  become: yes
+  tasks:
+    - name: status firewall
+      ansible.builtin.service:
+        name: firewalld
+        state: started
+        enabled: yes
+
+    - name: open port
+      ansible.posix.firewalld:
+        port: "1094/tcp"
+        permanent: yes
+        state: enabled
+        immediate: yes
