@@ -10,20 +10,22 @@ LD_PRELOAD=/usr/lib64/libjemalloc.so
 # Disable the KRB5 replay cache
 KRB5RCACHETYPE=none
 
+EOS_FST_POSIX_FALLOCATE=1
+
 # What roles should the xroot daemon run for. For each role you can overwrite the default options using a dedicate sysconfig file e.g. /etc/sysconfig/xrd.<role>.
 # The role based mechanism allows for multiple xrd's running with different options to be controlled via the same systemd script
 
 #-------------------------------------------------------------------------------
 # EOS roles - Systemd Services
 #-------------------------------------------------------------------------------
-XRD_ROLES="mgm mq"
+XRD_ROLES="mq mgm"
 
 #-------------------------------------------------------------------------------
 # EOS Configuration
 #-------------------------------------------------------------------------------
 
 # The fully qualified hostname of current MGM
-EOS_MGM_HOST="grid04.aligrid.hiroshima-u.ac.jp" 
+EOS_MGM_HOST="mgm.aligrid.hiroshima-u.ac.jp" 
 
 # The fully qualified hostname of target MGM
 # EOS_MGM_HOST_TARGET="grid05.aligrid.hiroshima-u.ac.jp"
@@ -38,22 +40,18 @@ EOS_AUTOLOAD_CONFIG=default
 
 # The EOS broker URL ; FOR FST USAGE USE THE FQDN OF THE MQ!!!!!
 EOS_BROKER_URL="root://eos.aligrid.hiroshima-u.ac.jp:1097//eos/"
-#EOS_BROKER_URL="root://grid04.aligrid.hiroshima-u.ac.jp:1097//eos/,root://grid05.aligrid.hiroshima-u.ac.jp:1097//eos/,root://grid06.aligrid.hiroshima-u.ac.jp:1097//eos/"
 
 # The EOS host geo location tag used to sort hosts into geographical (rack) locations
 # !!! REQUIRED !!! list of ":" separated tokens of up to 8 chars
 EOS_GEOTAG="JP:HU:ALICE"
 
 # The fully qualified hostname of MGM master1
-EOS_MGM_MASTER1="grid04.aligrid.hiroshima-u.ac.jp"
+EOS_MGM_MASTER1="mgm.aligrid.hiroshima-u.ac.jp"
 
 # The fully qualified hostname of MGM master2
-EOS_MGM_MASTER2="grid05.aligrid.hiroshima-u.ac.jp"
+EOS_MGM_MASTER2="mgm.aligrid.hiroshima-u.ac.jp"
 
-# The fully qualified hostname of MGM master3
-EOS_MGM_MASTER3="grid06.aligrid.hiroshima-u.ac.jp"
-
-# The alias which selects master 1 or 2 or 3
+# The alias which selects master 1 or 2
 EOS_MGM_ALIAS="eos.aligrid.hiroshima-u.ac.jp"
 
 # In HA mode, presence of this env enables the redirection of the read traffic from the slaves to the master
@@ -105,7 +103,6 @@ EOS_USE_SHARED_MUTEX=1
 # The min value is 1 and the max 1024. By default this 1024.
 # EOS_XRD_CONNECTION_POOL_SIZE=64
 
-# put new line
 EOS_USE_MQ_ON_QDB=1
 #-------------------------------------------------------------------------------
 # FST Configuration
@@ -115,7 +112,7 @@ EOS_USE_MQ_ON_QDB=1
 EOS_FST_NO_SSS_ENFORCEMENT=1
 
 # Network interface to monitor (default eth0)
-EOS_FST_NETWORK_INTERFACE="ens1f1np1"
+EOS_FST_NETWORK_INTERFACE="ens1f0np0"
 
 # Specify in seconds how often FSTs should query for new delete operations
 EOS_FST_DELETE_QUERY_INTERVAL=300
@@ -175,7 +172,6 @@ EOS_FST_DELETE_QUERY_INTERVAL=300
 
 # XFS filesystems will use file allocation, other filesystems like EXT4 and BTRFS will not use fallocation
 # unless the following variable is defined (the value is not considered)
-EOS_FST_POSIX_FALLOCATE=1
 
 #-------------------------------------------------------------------------------
 # GRPC Configuration
