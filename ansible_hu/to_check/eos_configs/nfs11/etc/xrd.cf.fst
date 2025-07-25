@@ -1,5 +1,5 @@
 ###########################################################
-set MGM=grid04.aligrid.hiroshima-u.ac.jp
+set MGM=eos.aligrid.hiroshima-u.ac.jp
 ###########################################################
 
 ###########################################################
@@ -40,7 +40,6 @@ ofs.tpc pgm /opt/eos/xrootd/bin/xrdcp
 ###########################################################
 # this URL can be overwritten by EOS_BROKER_URL defined /etc/sysconfig/xrd
 fstofs.broker root://eos.aligrid.hiroshima-u.ac.jp:1097//eos/
-#fstofs.broker root://grid04.hiroshima-u.ac.jp:1097//eos/
 fstofs.autoboot true
 fstofs.quotainterval 10
 fstofs.metalog /var/eos/md/
@@ -49,7 +48,7 @@ fstofs.metalog /var/eos/md/
 ###########################################################
 
 # QuarkDB cluster info needed by FSCK to perform the namespace scan
-fstofs.qdbcluster grid04.aligrid.hiroshima-u.ac.jp:7777,grid05.aligrid.hiroshima-u.ac.jp:7777,grid06.aligrid.hiroshima-u.ac.jp:7777
+fstofs.qdbcluster grid04.aligrid.hiroshima-u.ac.jp:7777 grid05.aligrid.hiroshima-u.ac.jp:7777 grid06.aligrid.hiroshima-u.ac.jp:7777
 fstofs.qdbpassword_file /etc/quarkdb.pass
 
 # Use gRPC?
@@ -71,6 +70,4 @@ if exec xrootd
     xrd.tlsca  certdir /etc/grid-security/certificates/
 fi
 
-#xrootd.monitor all flush 60s window 30s dest files info user file:/var/log/eos/mgm/xrdmon.log
-xrootd.monitor all auth flush 30s window 5s info level all dest vobox.your.domain:9930
-
+xrootd.monitor all flush 60s window 30s dest files info user grid01.aligrid.hiroshima-u.ac.jp
