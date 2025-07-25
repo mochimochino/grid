@@ -9,8 +9,8 @@ all.sitename ALICE::Hiroshima::EOS
 xrootd.fslib -2 libXrdEosFst.so
 xrootd.async off nosf
 xrd.network keepalive
-#xrootd.redirect $(MGM) chksum
-xrootd.redirect grid04.aligrid.hiroshima-u.ac.jp,grid05.aligrid.hiroshima-u.ac.jp,grid06.aligrid.hiroshima-u.ac.jp chksum
+xrootd.redirect $(MGM) chksum
+#xrootd.redirect grid04.aligrid.hiroshima-u.ac.jp,grid05.aligrid.hiroshima-u.ac.jp,grid06.aligrid.hiroshima-u.ac.jp chksum
 
 # Specify when threads are created, how many can be created, and when they should be destroyed.
 # https://xrootd.web.cern.ch/doc/dev57/xrd_config.htm#_Toc171719950
