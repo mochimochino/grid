@@ -1,0 +1,110 @@
+---
+- name: Prepare all EOS nodes
+  hosts: all
+  become: yes
+  tasks:
+    - name: Remove old eos and xrootd packages
+      ansible.builtin.dnf:
+        name:
+          - 'eos-*'
+          - 'xrootd-*'
+        state: absent
+      ignore_errors: true
+
+    - name: Update and upgrade all packages on the system
+      ansible.builtin.dnf:
+        name: '*'
+        state: latest
+
+- name: Install packages on MGM nodes
+  hosts: eos_mgm
+  become: yes
+  tasks:
+    - name: Install EOS MGM packages
+      ansible.builtin.dnf:
+        name:
+          - eos-server
+          - eos-client
+          - eos-quarkdb
+          - xrootd
+          - jemalloc
+        state: present
+
+- name: Install packages on FST nodes
+  hosts: eos_fst
+  become: yes
+  tasks:
+    - name: Install EOS FST packages
+      ansible.builtin.dnf:
+        name:
+          - eos-server
+          - eos-client
+        state: present
+
+- name: Configure common EOS directories and files
+  hosts: all
+  become: yes
+  tasks:
+    - name: Copy EOS common files
+      ansible.builtin.copy:
+        dest: "/etc/{{ item }}" # ファイルごとに正しい宛先を指定
+        src: "{{ playbook_dir }}/../additions/eos_setup/{{ item }}"
+        owner: daemon
+        group: daemon
+        mode: '0400'
+        force: true
+      loop:
+        - quarkdb.pass
+        - eos.keytab
+
+    - name: Create EOS directories
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        owner: daemon
+        group: daemon
+        mode: 'u=rwX,g=rX,o=rX'
+        recurse: false
+      loop:
+        - /var/eos
+        - /var/eos/auth
+        - /var/eos/html
+        - /var/eos/fst
+        - /var/eos/md
+        - /var/eos/mgm
+        - /var/eos/mq
+        - /var/eos/ns-queue
+        - /var/eos/qos
+        - /var/eos/report
+        - /var/eos/stage
+        - /var/eos/wfe
+        - /var/spool/eos
+        - /var/spool/eos/admin
+        - /var/spool/eos/core/mgm
+        - /var/spool/eos/core/mq
+        - /var/spool/eos/core/fst
+        - /var/log/eos
+
+    - name: Set EOS default acl permissions
+      ansible.posix.acl:
+        path: "{{ item }}"
+        entity: daemon
+        etype: user
+        permissions: rw
+        default: true
+        state: present
+      loop:
+        - /var/eos
+        - /var/eos/auth
+        - /var/eos/html
+        - /var/eos/fst
+        - /var/eos/md
+        - /var/eos/mgm
+        - /var/eos/mq
+        - /var/eos/ns-queue
+        - /var/eos/qos
+        - /var/eos/report
+        - /var/eos/stage
+        - /var/eos/wfe
+        - /var/spool/eos
+        - /var/log/eos
