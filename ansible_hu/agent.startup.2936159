@@ -1,0 +1,88 @@
+#!/bin/bash
+export JALIEN_TOKEN_CERT="-----BEGIN CERTIFICATE-----
+MIIDUDCCAjigAwIBAgIQIc9fQzQZHi9Xeu0mK9qRTTANBgkqhkiG9w0BAQsFADAx
+MQswCQYDVQQGEwJjaDEPMA0GA1UEChMGQWxpRW4yMREwDwYDVQQDEwhBbGlFbiBD
+QTAeFw0yNTA3MjkxMTAyMzVaFw0yNTA3MzExMzAyMzVaMDExCzAJBgNVBAYTAmNo
+MQ8wDQYDVQQKDAZBbGlFbjIxETAPBgNVBAMMCEpvYkFnZW50MIIBIjANBgkqhkiG
+9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjiaoGWlucFt58i1zOXpEvytNtrDEvT27Pzej
+ZxmnId1kxjoQtnozfIaO514/fWjHtkIwrr+61tXT9tH0qeX19JU6qWYujHhYNS+e
+nyKEGfYcjS8uAPgDp8Ktz+9/YRRH28TNmrLNPCXNxJZBy2JtmJwG/YNt7i9862Nb
+0klZ1eo8Dqtk6W93mcKe5GUW0jvc335JlXzzTx2mHhjG+7K2Whbp3+i3TZrgg395
+5S+SI26KoUQjDKfz+e+kGQJDIG0SLaZjWsEsHkdUkMuj4IGM/RG7VG0x/52TDqim
+qsCnViXkjP0/2tCKjKZgXz2NtkQkxiDGR9vCEHdOGGlYBfSD/QIDAQABo2QwYjAf
+BgNVHSMEGDAWgBQMYbqlSS9NZ+9PhcYLOfqY+cEq4DAdBgNVHQ4EFgQUTYXE60CZ
+sd1tymyEXeII3+EOlzIwEwYDVR0lBAwwCgYIKwYBBQUHAwIwCwYDVR0PBAQDAgXg
+MA0GCSqGSIb3DQEBCwUAA4IBAQCRaHJGfxUgX5vfyaoxQ+9h74/jVmcFCt3Hj/bW
+BWzNA8zDvq2k/1v2Or97QeiAQdViPK9Hi4/i+pjny2uJaFLUxwGbd9OIgac4skjr
+92N9CZB16lQTXvxSZXhigRQztDA7io6Mla1Jccskrw3QUd3Jig9nthaTi+wSl3mR
+x+jGjQigt09uE/WRb23nZBu7FuNyS5jj2Eh7neB4HBAs54gOFNlhVsKrxlbDrAmn
+t9P+xZSUSTAhN3r+AWmcVhaZgblHP8pNbiNWeclzaI0MtnlP2kR4njmWodLGkptU
+3hPLPMoP6nvp5cFq6QlJtJH9zdovED7N9/nYViHTY0LXXvz+
+-----END CERTIFICATE-----";
+export JALIEN_TOKEN_KEY="-----BEGIN RSA PRIVATE KEY-----
+MIIEogIBAAKCAQEAjiaoGWlucFt58i1zOXpEvytNtrDEvT27PzejZxmnId1kxjoQ
+tnozfIaO514/fWjHtkIwrr+61tXT9tH0qeX19JU6qWYujHhYNS+enyKEGfYcjS8u
+APgDp8Ktz+9/YRRH28TNmrLNPCXNxJZBy2JtmJwG/YNt7i9862Nb0klZ1eo8Dqtk
+6W93mcKe5GUW0jvc335JlXzzTx2mHhjG+7K2Whbp3+i3TZrgg3955S+SI26KoUQj
+DKfz+e+kGQJDIG0SLaZjWsEsHkdUkMuj4IGM/RG7VG0x/52TDqimqsCnViXkjP0/
+2tCKjKZgXz2NtkQkxiDGR9vCEHdOGGlYBfSD/QIDAQABAoIBAAxxcFIHI1p0+3P6
+TAWKQSXNy9fz2cjp9C/YtjZCbdmeSGG8t/VNNaAPJEe2/Y5EA4Vd/mZxlJCVN6B5
+qPXNUi4WeQPWlLkJmMkREczCx/cAzueB64A8tY80EKRsxcTw8khXzhqeT65V7dDp
+STmdNFRBRjBfVppcsE3njORXtOQvYytSLJUcQyw5gtIP9YKm8Jqv04db4VrxgVxA
+hxXAPmXl/XCBIu0aynDHNBRDUATY1cw0WDXKbLnF8F92kL92uOJZRS8/6R4wdnSJ
+UtjDlsiokxsEV0hLixtM3vSrt+ulN4TWT/op0kFFJWAVglNJTb/lQ1qjmMc977Np
+Yw8gNNkCgYEAwZd+Hi+exF6SLHnzsodaKAyKTFhWaIX4WIt4yoDtaKBQG7h9Qvd9
+WREcZsY0iRLetJmrjWSvTCEiiNiwuN1eQTfnRi0NoDhp2f6yzq1BQ9mdjYCRxvK7
+tBqGt5HUitXF6aApcc2cOu+neeC+EfKdH8uO/bKTcOO/o5eImgh8hOkCgYEAu/ns
+NPEAHLxEzgyQC6yfcyGKQLmrFwEFmyQeAIzfpdSfjdbNVJNDfc4KGYPWQ2pUqEyD
+KE8KKK4qjhA/2/2UKUernI73rtWhHhvOoJsyHYHGL+u7z4Q3V65lgadbLYVJ5RQ3
+UJc2/frNDFkKcsrufsioBIplcxAl7LuqttmAKfUCgYA4taYONajuoT10pezLeXbh
+kHrazm3RhJ0xYvnpaEcjhQKyfCLFgTZI5whI2vr8xHhUs0dbzgjD5lj1eXSbUs2P
+kU7AceYx7xSi9Udv37TkqVTL5MPPYb+2jKa2E5QNb33gaDh7y91eLmIDA+Dp5QY+
+ECU9EBi80xqKU5OCe8XuMQKBgH7xXmS6RBsjwUttDHH115BGnDjtqe7VD9YfY+t3
+NymkF0QQRYXSFYgF9qgYckAAtL8bPI+iIPgr9i0OKDIGY2IlNm151yZIuo+8s6Oe
+aw+mLhL6nVCct0sNSRtvy5FILAj5yAkytT57erHWB8pR5RHVrDG0zKIRy6q9aaIl
+6/lpAoGAbVr0gYfi1Etl6dBSNtXcnRuS+gxDIB6Wh8L32YJgIYxVN52ulCC0CcH6
+hcMle9+1g9XZQ3swguhJZMY5+MqwPaDP+gyd2BLcOGDUtQyWf0FT6vl8waaV7E5Y
+KGMAXcSNwNL06X53tSsjv4BdFV3uqLExzGd3RJKYWkBEYvaNMbY=
+-----END RSA PRIVATE KEY-----";
+export VOBOX_CVMFS_REVISION=22874
+export PATH=$PATH
+export HOME=`pwd`
+export TMP=$HOME
+export TMPDIR=$TMP
+export LOGDIR="$HOME/ALICE/alien-logs"
+export CACHEDIR="$HOME/ALICE/cache"
+export TMPDIR="$HOME/ALICE/tmp"
+export cerequirements='other.user=="mstoretv",other.user=="aliprod",other.cpucores>=1'
+export RequiredCpusCe=">=1"
+export ALIEN_CM_AS_LDAP_PROXY="grid01.aligrid.hiroshima-u.ac.jp:10000"
+export site="Hiroshima"
+export ALIEN_SITE="Hiroshima"
+export CE="ALICE::Hiroshima::LCG"
+export CEhost="grid01.aligrid.hiroshima-u.ac.jp"
+export TTL="87000"
+export TAG="2.0.1"
+export -n _LMFILES_
+export APPTAINER_SILENT=true
+export APMON_CONFIG="grid01.aligrid.hiroshima-u.ac.jp"
+export CPUCores="0"
+export partition=",PDC08_2,multicore_8,"
+export JALIEN_JOBAGENT_CMD="/cvmfs/alice.cern.ch/java/JDKs/$(uname -m)/jdk-latest/bin/java -client -Xms16M -Xmx128M -Djdk.lang.Process.launchMechanism=vfork -Dalien.config.ConfigUtils.loggingConfigFile=remote_logging -Dlia.util.ntp.enabled=false -XX:+UseSerialGC -cp /cvmfs/alice.cern.ch/java/jar/jalien/alien-users-podman-test-7.jar alien.site.JobRunner"
+
+#
+# customization 1 start
+#
+
+# sleep 3555
+
+#export site="CERN"
+
+podman run -i --rm -v /cvmfs:/cvmfs -v $PWD:/workdir:z -w /workdir --network=host dir:/cvmfs/alice.cern.ch/containers/fs/podman/x86_64/alma9-alice-20250710 /bin/bash -c "echo TESTWRITE >> /workdir/testfile && echo success!"
+
+#
+# customization 1 end
+#
+
+eval $JALIEN_JOBAGENT_CMD
+
