@@ -1,0 +1,26 @@
+all:
+  vars:
+       ansible_ssh_user: root
+  children:
+      wn_qx300:
+        hosts:
+            qx301:
+            qx302:
+            qx303:
+            qx304:
+            qx305:
+            qx306:
+            qx307:
+            qx308:
+            qx309:
+            qx310:
+            qx311:
+            qx312:
+            qx313:
+            qx314:
+            qx315:
+            qx316:
+            qx317:
+            qx318:
+            qx319:
+            qx320:
