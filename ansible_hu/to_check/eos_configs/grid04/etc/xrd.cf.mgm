@@ -59,7 +59,6 @@ alicetokenacc.noauthzhost    localhost.localdomain
 #mgmofs.trace all debug
 
 # this URL can be overwritten by EOS_BROKER_URL defined in /etc/sysconfig/eos
-#mgmofs.broker root://grid04.aligrid.hiroshima-u.ac.jp:1097//eos/
 mgmofs.broker root://eos.aligrid.hiroshima-u.ac.jp:1097//eos/
 # this name can be overwritten by EOS_INSTANCE_NAME defined in /etc/sysconfig/eos
 #mgmofs.instance eoshu
@@ -111,7 +110,7 @@ mgmofs.auththreads 16
 mgmofs.nslib /usr/lib64/libEosNsQuarkdb.so
 
 # Quarkdb custer configuration used for the namespace
-mgmofs.qdbcluster grid04.aligrid.hiroshima-u.ac.jp:7777,grid05.aligrid.hiroshima-u.ac.jp:7777,grid06.aligrid.hiroshima-u.ac.jp:7777
+mgmofs.qdbcluster grid04.aligrid.hiroshima-u.ac.jp:7777 grid05.aligrid.hiroshima-u.ac.jp:7777 grid06.aligrid.hiroshima-u.ac.jp:7777
 mgmofs.qdbpassword_file /etc/quarkdb.pass
 
 #-------------------------------------------------------------------------------
