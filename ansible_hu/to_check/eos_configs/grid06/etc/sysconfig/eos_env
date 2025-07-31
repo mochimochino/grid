@@ -46,10 +46,10 @@ EOS_BROKER_URL="root://eos.aligrid.hiroshima-u.ac.jp:1097//eos/"
 EOS_GEOTAG="JP:HU:ALICE"
 
 # The fully qualified hostname of MGM master1
-EOS_MGM_MASTER1="mgm.aligrid.hiroshima-u.ac.jp"
+EOS_MGM_MASTER1="eos.aligrid.hiroshima-u.ac.jp"
 
 # The fully qualified hostname of MGM master2
-EOS_MGM_MASTER2="mgm.aligrid.hiroshima-u.ac.jp"
+EOS_MGM_MASTER2="eos.aligrid.hiroshima-u.ac.jp"
 
 # The alias which selects master 1 or 2
 EOS_MGM_ALIAS="eos.aligrid.hiroshima-u.ac.jp"
