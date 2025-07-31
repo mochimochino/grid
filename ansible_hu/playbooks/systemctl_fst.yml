@@ -1,0 +1,15 @@
+---
+- name: Restart EOS FST services
+  hosts: eos_fst
+  become: yes
+
+  tasks:
+    - name: Stop eos5-fst@fst-service
+      ansible.builtin.systemd:
+        name: eos5-fst@fst
+        state: stopped
+
+    - name: Start eos5-fst@fst-service
+      ansible.builtin.systemd:
+        name: eos5-fst@fst
+        state: started
