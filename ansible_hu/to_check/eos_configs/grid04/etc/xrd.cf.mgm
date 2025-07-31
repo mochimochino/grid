@@ -145,5 +145,4 @@ if exec xrootd
     # macaroons.trace  all
 fi
 
-#xrootd.monitor all flush 60s window 30s dest files info user file:/var/log/eos/mgm/xrdmon.log
-xrootd.monitor all auth flush 30s window 5s info level all dest vobox.your.domain:9930
+xrootd.monitor all flush 60s window 30s dest files info user grid01.aligrid.hiroshima-u.ac.jp:9930
