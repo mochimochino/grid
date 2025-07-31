@@ -25,7 +25,7 @@ XRD_ROLES="mq mgm"
 #-------------------------------------------------------------------------------
 
 # The fully qualified hostname of current MGM
-EOS_MGM_HOST="mgm.aligrid.hiroshima-u.ac.jp" 
+EOS_MGM_HOST="eos.aligrid.hiroshima-u.ac.jp" 
 
 # The fully qualified hostname of target MGM
 # EOS_MGM_HOST_TARGET="grid05.aligrid.hiroshima-u.ac.jp"
