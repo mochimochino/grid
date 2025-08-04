@@ -70,4 +70,4 @@ if exec xrootd
     xrd.tlsca  certdir /etc/grid-security/certificates/
 fi
 
-#xrootd.monitor all flush 60s window 30s dest files info user grid01.aligrid.hiroshima-u.ac.jp
+xrootd.monitor all flush 60s window 30s dest files info user grid01.aligrid.hiroshima-u.ac.jp:9930
