@@ -1,5 +1,5 @@
 ###########################################################
-set MGM=eos.aligrid.hiroshima-u.ac.jp
+set MGM=$EOS_MGM_ALIAS
 ###########################################################
 
 ###########################################################
@@ -9,7 +9,7 @@ all.sitename ALICE::Hiroshima::EOS
 xrootd.fslib -2 libXrdEosFst.so
 xrootd.async off nosf
 xrd.network keepalive
-xrootd.redirect $(MGM) chksum
+xrootd.redirect $(MGM):1094 chksum
 
 # Specify when threads are created, how many can be created, and when they should be destroyed.
 # https://xrootd.web.cern.ch/doc/dev57/xrd_config.htm#_Toc171719950

@@ -1,5 +1,5 @@
 ###########################################################
-set myName = Hiroshima
+set myName = ALICE::Hiroshima::EOS
 all.sitename ALICE::Hiroshima::EOS
 
 ###########################################################
@@ -59,7 +59,10 @@ alicetokenacc.noauthzhost    localhost.localdomain
 #mgmofs.trace all debug
 
 # this URL can be overwritten by EOS_BROKER_URL defined in /etc/sysconfig/eos
-mgmofs.broker root://eos.aligrid.hiroshima-u.ac.jp:1097//eos/
+#20250805
+#mgmofs.broker root://eos.aligrid.hiroshima-u.ac.jp:1097//eos/
+mgmofs.broker root://localhost:1097//eos/
+
 # this name can be overwritten by EOS_INSTANCE_NAME defined in /etc/sysconfig/eos
 #mgmofs.instance eoshu
 
