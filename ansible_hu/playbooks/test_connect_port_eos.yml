@@ -14,7 +14,7 @@
         host: "{{ item }}"
         port: 7777
         timeout: 10
-      loop: "{{ groups['mgm']}}"
+      loop: "{{ groups['eos_mgm']}}"
       ignore_errors: true
 
 - name: MGM to FST test
@@ -26,7 +26,7 @@
         host: "{{ item }}"
         port: 1095
         timeout: 10
-      loop: "{{ groups['fst'] }}"
+      loop: "{{ groups['eos_fst'] }}"
       ignore_errors: true
 
 - name: MGM to MGM test
@@ -39,7 +39,7 @@
         port: "{{ item.1 }}"
         timeout: 10
       when: item.0 != inventory_hostname
-      loop: "{{ groups['mgm'] | product([1094, 7777]) | list }}"
+      loop: "{{ groups['eos_mgm'] | product([1094, 7777]) | list }}"
       ignore_errors: true
 
 - name: MGM and FST to VOBOX test
