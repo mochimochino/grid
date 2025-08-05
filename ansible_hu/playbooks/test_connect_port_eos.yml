@@ -1,0 +1,54 @@
+---
+- name: FST to MGM QuarkDB test
+  hosts: eos_fst
+  gather_facts: false
+  tasks:
+    - name: "FST to MGM Alias 1094 conect test"
+      ansible.builtin.wait_for:
+        host: "eos.aligrid.hiroshima-u.ac.jp"
+        port: 1094
+        timeout: 10
+      ignore_errors: true
+    - name: "FST to MGM QuarkDB 7777 conect test"
+      ansible.builtin.wait_for:
+        host: "{{ item }}"
+        port: 7777
+        timeout: 10
+      loop: "{{ groups['mgm']}}"
+      ignore_errors: true
+
+- neme: MGM to FST test
+  hosts: eos_mgm
+  gather_facts: false
+  tasks: 
+    - name: "MGM to FST 1095 conect test"
+      ansible.builtin.wait_for:
+        host: "{{ item }}"
+        port: 1095
+        timeout: 10
+      loop: "{{ groups['fst'] }}"
+      ignore_errors: true
+
+- name: MGM to MGM test
+  hosts: eos_mgm
+  gather_facts: false
+  tasks:
+    - name: "MGM to MGM 1094 7777 conect test"
+      ansible.builtin.wait_for:
+        host: "{{ item.0 }}"
+        port: "{{ item.1 }}"
+        timeout: 10
+      when: item.0 != inventory_hostname
+      loop: "{{ groups['mgm'] | product([1094, 7777]) | list }}"
+      ignore_errors: true
+
+- name: MGM and FST to VOBOX test
+  hosts: eos_mgm:eos_fst 
+  gather_facts: false
+  tasks:
+    - name: "MGM adn FST to VOBOX 9930 conect test"
+      ansible.builtin.wait_for:
+        host: "grid01.aligrid.hiroshima-u.ac.jp"
+        port: 9930
+        timeout: 10
+      ignore_errors: true
