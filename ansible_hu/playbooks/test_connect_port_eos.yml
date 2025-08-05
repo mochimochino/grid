@@ -17,7 +17,7 @@
       loop: "{{ groups['mgm']}}"
       ignore_errors: true
 
-- neme: MGM to FST test
+- name: MGM to FST test
   hosts: eos_mgm
   gather_facts: false
   tasks: 
