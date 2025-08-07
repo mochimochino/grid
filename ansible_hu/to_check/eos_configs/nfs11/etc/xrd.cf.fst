@@ -26,7 +26,7 @@ sec.protocol sss -c /etc/eos.keytab -s /etc/eos.keytab
 sec.protbind * only unix sss
 
 ###########################################################
-all.export / nolock
+# all.export / nolock
 all.trace none
 all.manager localhost 2131
 #ofs.trace open
