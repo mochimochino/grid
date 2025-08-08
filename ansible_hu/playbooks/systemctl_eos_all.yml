@@ -1,0 +1,44 @@
+---
+- name: Stop EOS FST services
+  hosts: eos_fst
+  become: yes
+
+  tasks:
+    - name: Stop eos5-fst@fst-service
+      ansible.builtin.systemd:
+        name: eos5-fst@fst
+        state: stopped
+
+- name: Restart EOS MGM and QDB services
+  hosts: eos_mgm
+  become: yes
+
+  tasks:
+    - name: Stop eos5-mgm@mgm-service
+      ansible.builtin.systemd:
+        name: eos5-mgm@mgm
+        state: stopped
+
+    - name: Stop qdb service
+      ansible.builtin.systemd:
+        name: eos5-qdb@qdb
+        state: stopped
+
+    - name: Start qdb service
+      ansible.builtin.systemd:
+        name: eos5-qdb@qdb
+        state: started
+
+    - name: Start eos5-mgm@mgm-service
+      ansible.builtin.systemd:
+        name: eos5-mgm@mgm
+        state: started
+        
+- name: Restart EOS FST services
+  hosts: eos_fst
+  become: yes
+  tasks:  
+    - name: Start eos5-fst@fst-service
+      ansible.builtin.systemd:
+        name: eos5-fst@fst
+        state: started
