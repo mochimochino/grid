@@ -53,16 +53,16 @@ alicetokenacc.multiprocess 32
 
 alicetokenacc.truncateprefix /eos/hu/alice
 alicetokenacc.noauthzhost    localhost
-alicetokenacc.noauthzhost    localhost.localdomain
+#alicetokenacc.noauthzhost    localhost.localdomain
 # MGMs
-alicetokenacc.noauthzhost   grid04.aligrid.hiroshima-u.ac.jp
-alicetokenacc.noauthzhost   grid05.aligrid.hiroshima-u.ac.jp
-alicetokenacc.noauthzhost   grid06.aligrid.hiroshima-u.ac.jp
+#alicetokenacc.noauthzhost   grid04.aligrid.hiroshima-u.ac.jp
+#alicetokenacc.noauthzhost   grid05.aligrid.hiroshima-u.ac.jp
+#alicetokenacc.noauthzhost   grid06.aligrid.hiroshima-u.ac.jp
 
 # FSTs
-alicetokenacc.noauthzhost   nfs11.aligrid.hiroshima-u.ac.jp
-alicetokenacc.noauthzhost   nfs12.aligrid.hiroshima-u.ac.jp
-alicetokenacc.noauthzhost   nfs13.aligrid.hiroshima-u.ac.jp
+#alicetokenacc.noauthzhost   nfs11.aligrid.hiroshima-u.ac.jp
+#alicetokenacc.noauthzhost   nfs12.aligrid.hiroshima-u.ac.jp
+#alicetokenacc.noauthzhost   nfs13.aligrid.hiroshima-u.ac.jp
 
 ###########################################################
 #mgmofs.trace all debug
