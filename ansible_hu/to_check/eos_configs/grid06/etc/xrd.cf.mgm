@@ -54,6 +54,8 @@ alicetokenacc.multiprocess 32
 alicetokenacc.truncateprefix /eos/hu/alice
 alicetokenacc.noauthzhost    localhost
 #alicetokenacc.noauthzhost    localhost.localdomain
+# VOBOX
+alicetokenacc.noauthzhost    grid01.aligrid.hiroshima-u.ac.jp
 # MGMs
 #alicetokenacc.noauthzhost   grid04.aligrid.hiroshima-u.ac.jp
 #alicetokenacc.noauthzhost   grid05.aligrid.hiroshima-u.ac.jp
