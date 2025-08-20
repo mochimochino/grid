@@ -1,3 +1,3 @@
 KEY VO:*    PRIVKEY:/etc/grid-security/xrootd/privkey.pem   PUBKEY:/etc/grid-security/xrootd/pubkey.pem
-RULE    PATH:/                   AUTHZ:delete|read|write|write-once|    NOAUTHZ:|                               VO:*|       CERT:*
+RULE    PATH:/                   AUTHZ:delete|read|write|write-once|    NOAUTHZ:|                               VO:*|       CERT:IGNORE
 EXPORT  PATH:/  VO:*    ACCESS:ALLOW    CERT:*
