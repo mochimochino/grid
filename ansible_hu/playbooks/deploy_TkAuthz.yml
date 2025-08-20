@@ -5,7 +5,7 @@
   gather_facts: no
 
   tasks:
-    - name: Deploy specified files to each MGM
+    - name: Deploy TkAuthz files to each MGM
       ansible.builtin.copy:
         src: "/root/grid/ansible_hu/to_check/grid_security/TkAuthz.Authorization"
         dest: "/etc/grid-security/xrootd/TkAuthz.Authorization"
