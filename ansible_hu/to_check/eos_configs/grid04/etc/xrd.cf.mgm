@@ -28,16 +28,8 @@ sec.protocol unix
 
 # SSS authentication
 sec.protocol sss -c /etc/eos.keytab -s /etc/eos.keytab
-
-# GSI authentication
-##sec.protocol gsi -d:0 -md:sha256:sha1:md5 -crl:ignore -moninfo:1 -showdn:true -cert:/etc/grid-security/hostcert.pem -key:/etc/grid-security/hostkey.pem
-##sec.protparm gsi -gmapopt:null -gmapto:0 -vomsfun:/opt/eos/xrootd/lib64/libXrdSecgsiVOMS.so -vomsat:extract -vomsfunparms:certfmt=pem|vos=ops,dteam|dbg
-
-###########################################################
 sec.protbind localhost.localdomain sss unix
 sec.protbind localhost sss unix
-
-##sec.protbind * only gsi sss unix
 sec.protbind * only sss unix
 
 ###########################################################
