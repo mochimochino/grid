@@ -1,0 +1,15 @@
+---
+- name: Deploy TkAuth files
+  hosts: eos_mgm
+  become: yes
+  gather_facts: no
+
+  tasks:
+    - name: Deploy specified files to each MGM
+      ansible.builtin.copy:
+        src: "/root/grid/ansible_hu/to_check/grid_security/TkAuthz.Authorization"
+        dest: "/etc/grid-security/xrootd/TkAuthz.Authorization"
+        backup: yes
+        owner: root
+        group: root
+        mode: '0644'
