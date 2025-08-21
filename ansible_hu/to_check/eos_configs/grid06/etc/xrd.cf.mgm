@@ -13,7 +13,8 @@ xrd.sched mint 8 maxt 256 idle 60
 xrd.timeout hail 30 idle 300 kill 20 read 20
 
 ###########################################################
-all.export / nolock
+# caused this line?
+# all.export / nolock
 all.role manager
 
 ###########################################################
