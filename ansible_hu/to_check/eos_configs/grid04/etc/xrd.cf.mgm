@@ -14,7 +14,7 @@ xrd.timeout hail 30 idle 300 kill 20 read 20
 
 ###########################################################
 # caused this line?
-# all.export / nolock
+all.export / nolock
 all.role manager
 
 ###########################################################
