@@ -65,9 +65,9 @@ if exec xrootd
     http.trace  false
 
     # HOST CERTS REQUIRED
-    http.exthandler  xrdtpc libXrdHttpTPC.so
-    xrd.tls  /etc/grid-security/hostcert.pem /etc/grid-security/hostkey.pem
-    xrd.tlsca  certdir /etc/grid-security/certificates/
+    #http.exthandler  xrdtpc libXrdHttpTPC.so
+    #xrd.tls  /etc/grid-security/hostcert.pem /etc/grid-security/hostkey.pem
+    #xrd.tlsca  certdir /etc/grid-security/certificates/
 fi
 
 xrootd.monitor all flush 60s window 30s dest files info user grid01.aligrid.hiroshima-u.ac.jp:9930

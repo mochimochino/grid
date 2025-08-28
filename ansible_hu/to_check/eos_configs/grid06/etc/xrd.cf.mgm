@@ -137,9 +137,9 @@ if exec xrootd
     http.trace  false
 
     # host cert required !!!
-    #http.exthandler xrdtpc libXrdHttpTPC.so
-    #xrd.tls  /etc/grid-security/hostcert.pem /etc/grid-security/hostkey.pem
-    #xrd.tlsca  certdir /etc/grid-security/certificates/
+    http.exthandler xrdtpc libXrdHttpTPC.so
+    xrd.tls  /etc/grid-security/hostcert.pem /etc/grid-security/hostkey.pem
+    xrd.tlsca  certdir /etc/grid-security/certificates/
 
     # X509 Stuff
     # http.secxtractor  libXrdVoms.so

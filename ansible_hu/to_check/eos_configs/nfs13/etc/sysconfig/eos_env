@@ -45,7 +45,7 @@ EOS_BROKER_URL="root://eos.aligrid.hiroshima-u.ac.jp:1097//eos/"
 
 # The EOS host geo location tag used to sort hosts into geographical (rack) locations
 # !!! REQUIRED !!! list of ":" separated tokens of up to 8 chars
-EOS_GEOTAG="JP:HU:ALICE"
+EOS_GEOTAG="HU::ALICE"
 
 # The fully qualified hostname of MGM master1
 EOS_MGM_MASTER1='eos.aligrid.hiroshima-u.ac.jp'
