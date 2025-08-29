@@ -4,22 +4,22 @@
   become: yes
 
   tasks:
-    - name: Stop eos5-mgm@mgm-service
+    - name: Stop eos-mgm
       ansible.builtin.systemd:
-        name: eos5-mgm@mgm
+        name: eos@mgm
         state: stopped
 
     - name: Stop qdb service
       ansible.builtin.systemd:
-        name: eos5-qdb@qdb
+        name: xrootd@quarkdb0
         state: stopped
 
     - name: Start qdb service
       ansible.builtin.systemd:
-        name: eos5-qdb@qdb
+        name: xrootd@quarkdb0
         state: started
 
-    - name: Start eos5-mgm@mgm-service
+    - name: Start eos-mgm
       ansible.builtin.systemd:
-        name: eos5-mgm@mgm
+        name: eos@mgm
         state: started
