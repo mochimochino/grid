@@ -2,22 +2,28 @@
 
 広島サイトのファイルシステム構成についてまとめる。EOSを用いたファイルシステムの構成と、設定ファイル、必要な環境を記載する。
 
-環境準備-all node-
+## 環境準備-all node-
 ・EL9
 ネットワーク設定
 ・
 エイリアスが必要
-必要なソフトウェア一覧
-xroot-server
+### 必要なソフトウェア一覧
+eos関連
+CA関連
+xroot-server(Playbookに追加する必要あり）
 ## MGM/QDB node
-- grid04 （ホスト）
+Alias: `eos.aligrid.hiroshima-u.ac.jp` ipv4 and ipv6(未完了）
+- grid04
 - grid05
 - grid06
 ## FST node
 - nfs11
 - nfs12
 - nfs13
-
+## EOSのノードごとの役割と仕組み
+## EOSの設定方法
+#　その他
+## モニタリングに便利なもの
 
 # Central Manager
 items
@@ -319,6 +325,7 @@ Storage servers(EOS)
     - EOSにアクセスするクライアントマシンには、`eos-client` パッケージをインストールします。
 
 これらの手順とファイルは、ソースコードから推測されるEOSシステム構築の基本的な流れです。実際の環境に合わせて、変数の設定や追加の構成管理が必要になる場合があります。特にストレージ構成 (`/playbooks/00server_storage.yml` および関連ファイル) は、環境に大きく依存するため、注意が必要です。
+
 
 
 
