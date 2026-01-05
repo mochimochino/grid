@@ -1,6 +1,7 @@
 # Hiroshima grid
 
 広島サイトのファイルシステム構成についてまとめる。EOSを用いたファイルシステムの構成と、設定ファイル、必要な環境を記載する。
+（Gitlabへ移行）
 
 ## 環境準備-all node-
 ・EL9
@@ -288,6 +289,7 @@ EOS Diopsideのインストール手順
 
 71 directories, 175 files
 ```
+
 
 
 
